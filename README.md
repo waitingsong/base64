@@ -22,7 +22,7 @@ Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on
 
 
 ## Node.js requirement
-- v8.16.0+ for `bigint` base64 encoding
+- v10.4.0+ for `bigint` base64 encoding
 - [ICU](https://nodejs.org/api/util.html#util_whatwg_supported_encodings) installation for base64 decoding with encodeings other then `utf-8` and `utf-16le`
 
 

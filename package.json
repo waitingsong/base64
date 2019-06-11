@@ -14,7 +14,7 @@
     "ts"
   ],
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=10.4.0"
   },
   "bin": {},
   "browser": "./dist/index.esm.js",

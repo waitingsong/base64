@@ -21,7 +21,7 @@ Base64 编码、解码 JS 实现， 支持长青浏览器和 Node.js，基于 [b
 
 
 ## Node.js 需求
-- 对 `bigint` 进行 base64 编码需要版本 v8.16.0+ 
+- 对 `bigint` 进行 base64 编码需要版本 v10.4.0 及以上
 - 若 base64 解码输出 `utf-8` and `utf-16le` 之外的编码需要安装 [ICU](https://nodejs.org/api/util.html#util_whatwg_supported_encodings) 
 
 
