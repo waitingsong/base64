@@ -36,8 +36,11 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   else if (ArrayBuffer.isView(buf)) {
     input = buf
   }
-  else {
+  else if (buf instanceof ArrayBuffer) {
     input = new Uint8Array(buf)
+  }
+  else {
+    throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
   }
 
   return fromUint8Array(input)
