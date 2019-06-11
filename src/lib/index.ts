@@ -11,6 +11,7 @@ import {
   NodeDecode,
   NodeEncode,
 } from './nodejs'
+import { getLens, _byteLength } from './to_buffer'
 
 
 export function b64encode(
@@ -45,4 +46,17 @@ export function b64fromBuffer(buffer: ArrayBuffer | Uint8Array): string {
     ? nodeFromBuffer(buffer)
     : browserFromBuffer(buffer)
   return ret
+}
+
+
+/**
+ * Calculate buffer.byteLength from base64
+ *
+ * base64 is 4/3 + up to two characters of the original data
+ */
+export function b64byteLength(base64: string): number {
+  const lens = getLens(base64)
+  const validLen = lens[0]
+  const placeHoldersLen = lens[1]
+  return _byteLength(validLen, placeHoldersLen)
 }
