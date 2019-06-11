@@ -1,28 +1,33 @@
 {
-  "name": "npm-base",
+  "name": "@waiting/base64",
   "author": "waiting",
   "version": "0.0.1",
-  "description": "npm boilerplate",
+  "description": "Base64 encoding/decoding in pure JS on both modern Browsers and Node.js",
   "keywords": [
-    "种子项目",
+    "base64",
+    "browser",
+    "Node.js",
+    "rfc4648",
+    "TextEncoder",
+    "TextDecoder",
     "typescript"
   ],
   "engines": {
     "node": ">=8.10.0"
   },
   "bin": {},
-  "browser": "",
+  "browser": "./dist/index.esm.js",
   "es2015": "./dist/index.esm.js",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bugs": {
-    "url": "https://github.com/waitingsong/npm-base/issues"
+    "url": "https://github.com/waitingsong/base64/issues"
   },
-  "homepage": "https://github.com/waitingsong/npm-base#readme",
+  "homepage": "https://github.com/waitingsong/base64#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waitingsong/npm-base.git"
+    "url": "git+https://github.com/waitingsong/base64.git"
   },
   "license": "MIT",
   "nyc": {
@@ -46,16 +51,14 @@
     ],
     "all": true
   },
-  "dependencies": {
-    "@waiting/shared-core": "^1.9.1",
-    "rxjs": "^6.5.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/mocha": "*",
     "@types/node": "^12.0.2",
     "@types/power-assert": "*",
     "@types/rewire": "*",
     "@types/rimraf": "*",
+    "@waiting/shared-core": "^1.9.1",
     "@types/yargs": "^13.0.0",
     "coveralls": "^3.0.3",
     "intelli-espower-loader": "^1.0.1",

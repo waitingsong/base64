@@ -1,0 +1,78 @@
+/// <reference types="mocha" />
+
+import {
+  basename,
+  join,
+} from '@waiting/shared-core'
+import { writeFileSync } from 'fs'
+import * as assert from 'power-assert'
+import rewire = require('rewire')
+import { TextDecoder, TextEncoder } from 'util'
+
+import { b64decode, b64encode } from '../src/index'
+import { defaultConfig, ErrorMsg } from '../src/lib/config'
+
+import { input1, input2, input3, input4, input44, input5 } from './config'
+
+
+const filename = basename(__filename)
+const mods = rewire('../src/index')
+
+
+describe(filename, () => {
+  before(() => {
+    defaultConfig.forceBrowser = true
+  })
+  after(() => {
+    defaultConfig.forceBrowser = false
+  })
+
+  describe('Should b64encode() works', () => {
+    it('with valid input', () => {
+      const ret = input1.concat(input2, input3, input4, input5).map(value => {
+        const ret1 = b64encode(value, TextEncoder)
+        const ret2 = Buffer.from(value.toString()).toString('base64')
+        assert(ret1 === ret2, `input: "${ value.toString() }"`)
+        return ret1
+      })
+      // writeFileSync('./base64', "'" + ret.join("',\n'") + "',\n")
+    })
+
+    it('with invalid input', () => {
+      input44.forEach(value => {
+        try {
+          // @ts-ignore
+          b64encode(value, TextEncoder)
+          assert(false, `Should throw error, but NOT. str:"${value}"`)
+        }
+        catch (ex) {
+          assert(ex.message.includes(ErrorMsg.encodeInvalidParam), ex.message)
+        }
+      })
+    })
+  })
+
+
+  describe('Should b64decode() works', () => {
+    it('with valid input', () => {
+      input1.concat(input2, input4, input5).forEach(value => {
+        const input = value.toString()
+        const b64 = Buffer.from(input).toString('base64')
+        const ret = b64decode(b64, 'utf8', TextDecoder)
+        assert(ret === input, input)
+      })
+    })
+
+    it('with invalid input', () => {
+      input3.forEach(value => {
+        const input = value.toString()
+        const b64 = Buffer.from(input).toString('base64')
+        const ret = b64decode(b64, 'utf8', TextDecoder)
+        const code = ret.codePointAt(0)
+
+        assert(code && code === 65533, `input: "${input}", code: "${code}"`)
+      })
+    })
+  })
+
+})
