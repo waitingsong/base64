@@ -112,3 +112,10 @@ export const input8: Input8Item[] = [
   [ [0, -73, 23], 'ALcX'],
   [ [0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87], '5Lit5paH'],
 ]
+
+
+export const input9 = [
+  ' ',
+  '*',
+  '?',
+]
