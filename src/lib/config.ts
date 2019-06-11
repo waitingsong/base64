@@ -20,6 +20,7 @@ export const ErrorMsg = {
   notValidB64String: 'Valid base64 string only contains /^[a-zA-Z0-9+/_-]+={0,2}$/',
   textEncoderUndefined: 'TextEncoder undefined!',
   textDecoderUndefined: 'TextDecoder undefined!',
+  startMustGrossOrEqualToEnd:  'Parameters of start should less then end',
 }
 
 export const defaultConfig = {

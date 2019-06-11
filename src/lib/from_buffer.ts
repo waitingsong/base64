@@ -1,5 +1,5 @@
 // rewrite from https://github.com/beatgammit/base64-js
-import { lookup } from './config'
+import { lookup, ErrorMsg } from './config'
 
 
 export function fromUint8Array(input: Uint8Array): string {
@@ -41,7 +41,7 @@ export function fromUint8Array(input: Uint8Array): string {
 function encodeChunk(input: Uint8Array, start: number, end: number): string {
   /* tslint:disable: no-bitwise */
   if (start > end) {
-    throw new Error('parameters of start should less then end')
+    throw new Error(ErrorMsg.startMustGrossOrEqualToEnd)
   }
   const ret: string[] = new Array((end - start) / 3)
   for (let i = start, curTriplet = 0; i < end; i += 3) {
