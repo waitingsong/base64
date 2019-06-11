@@ -36,8 +36,11 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   else if (ArrayBuffer.isView(buf)) {
     inst = Buffer.from(buf)
   }
-  else {
+  else if (buf instanceof ArrayBuffer) {
     inst = Buffer.from(buf)
+  }
+  else {
+    throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
   }
 
   const ret = inst.toString('base64')
