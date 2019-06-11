@@ -90,4 +90,5 @@ export const input8: Input5Item[] = [
   [ [0, 1, -1], 'AAH/'],
   [ [1, 1, 1], 'AQEB'],
   [ [0, -73, 23], 'ALcX'],
+  [ [0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87], '5Lit5paH'],
 ]

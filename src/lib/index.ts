@@ -1,11 +1,16 @@
 import {
   browserDecode,
   browserEncode,
+  fromBuffer as browserFromBuffer,
 } from './browser'
 import { defaultConfig } from './config'
 import { isBrowser } from './helper'
 import { TextDecoderFn, TextEncoderFn } from './model'
-import { NodeDecode, NodeEncode } from './nodejs'
+import {
+  fromBuffer as nodeFromBuffer,
+  NodeDecode,
+  NodeEncode,
+} from './nodejs'
 
 
 export function b64encode(
@@ -30,5 +35,14 @@ export function b64decode(
   const ret = defaultConfig.forceBrowser || isBrowser()
     ? browserDecode(base64, outputEncoding, textDecoder)
     : NodeDecode(base64, outputEncoding)
+  return ret
+}
+
+
+/** Encode to base64, source from ArrayBuffer or Uint8Array */
+export function b64FromBuffer(buffer: ArrayBuffer | Uint8Array): string {
+  const ret = defaultConfig.forceBrowser || isBrowser()
+    ? nodeFromBuffer(buffer)
+    : browserFromBuffer(buffer)
   return ret
 }

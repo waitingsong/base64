@@ -8,10 +8,10 @@ import { writeFileSync } from 'fs'
 import * as assert from 'power-assert'
 import rewire = require('rewire')
 
-import { b64decode, b64encode } from '../src/index'
+import { b64decode, b64encode, b64FromBuffer } from '../src/index'
 import { ErrorMsg } from '../src/lib/config'
 
-import { input1, input2, input3, input4, input44, input5 } from './config'
+import { input1, input2, input3, input4, input44, input5, input8 } from './config'
 
 
 const filename = basename(__filename)
@@ -66,7 +66,18 @@ describe(filename, () => {
         assert(code && code === 65533, `input: "${input}", code: "${code}"`)
       })
     })
+  })
 
+
+  describe('Should b64FromBuffer() works', () => {
+    it('with valid input', () => {
+      input8.forEach(row => {
+        const u8arr = Uint8Array.from(row[0])
+        const actual = b64FromBuffer(u8arr)
+        const expected = row[1]
+        assert(actual === expected, `Ensure that ${u8arr} serialise to ${expected}`)
+      })
+    })
   })
 
 })

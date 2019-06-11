@@ -11,6 +11,7 @@ Base64 编码、解码 JS 实现， 支持长青浏览器和 Node.js，基于 [b
 
 ## 特色
 - 编码输入参数支持 `string`, `number` 和 [`bigint`](https://github.com/tc39/proposal-bigint) 类型
+- 编码输入参数支持 `ArrayBuffer` 或者 `Uint8Array`
 - 编码解码的实现： 浏览器下通过 `TextEncoder`/`TextDecoder`，Node.js 下通过 `Buffer`
 
 
@@ -40,6 +41,9 @@ b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8
 b64encode('schöne') === 'c2Now7ZuZQ=='
 // bigint
 b64encode(1n) === b64encode(1) // 'MQ=='
+
+const u8arr = Uint8Array.from([0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87])
+b64FromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
 ```
 
 ### 解码

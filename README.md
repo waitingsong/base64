@@ -12,6 +12,7 @@ Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on
 
 ## Features
 - Encoding input supports typeof `string`, `number` and [`bigint`](https://github.com/tc39/proposal-bigint)
+- Encoding input supports `ArrayBuffer` or `Uint8Array`
 - Encoding/Decoding via `TextEncoder`/`TextDecoder` under browser and `Buffer` under Node.js
 
 
@@ -35,13 +36,16 @@ npm install @waiting/base64
 
 ### Encodeing
 ```ts
-import { b64encode } from '@waiting/base64'
+import { b64encode, b64FromBuffer } from '@waiting/base64'
 
 b64encode('A') === 'QQ=='
 b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8KCutw=='
 b64encode('schöne') === 'c2Now7ZuZQ=='
 // bigint
 b64encode(1n) === b64encode(1) // 'MQ=='
+
+const u8arr = Uint8Array.from([0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87])
+b64FromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
 ```
 
 
