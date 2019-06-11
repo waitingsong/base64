@@ -10,7 +10,8 @@
     "rfc4648",
     "TextEncoder",
     "TextDecoder",
-    "typescript"
+    "typescript",
+    "ts"
   ],
   "engines": {
     "node": ">=8.10.0"
@@ -58,8 +59,8 @@
     "@types/power-assert": "*",
     "@types/rewire": "*",
     "@types/rimraf": "*",
-    "@waiting/shared-core": "^1.9.1",
     "@types/yargs": "^13.0.0",
+    "@waiting/shared-core": "^1.9.1",
     "coveralls": "^3.0.3",
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^5.2.0",
