@@ -15,6 +15,7 @@ import { ErrorMsg } from '../src/index'
 import {
   isArrayBuffer,
   isBrowser,
+  isUint8Array,
   parseDecodeInputBase64,
   parseEncodeInputString,
   parseTextDecoder,
@@ -153,6 +154,27 @@ describe(filename, () => {
       )
       arr.forEach(value => {
         const ret = isArrayBuffer(value)
+        assert(ret === false)
+      })
+    })
+  })
+
+
+  describe('isUint8Array() works', () => {
+    it('with valid input', () => {
+      inputUint8Array.forEach(value => {
+        const ret = isUint8Array(value)
+        assert(ret === true)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = input44.concat(
+        inputTypedArrayExcludingUint8Array,
+        inputArrayBuffer,
+      )
+      arr.forEach(value => {
+        const ret = isUint8Array(value)
         assert(ret === false)
       })
     })

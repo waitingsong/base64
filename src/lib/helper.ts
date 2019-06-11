@@ -83,3 +83,10 @@ export function isBrowser(): boolean {
 export function isArrayBuffer(buffer: any): boolean {
   return buffer && buffer instanceof ArrayBuffer ? true : false
 }
+
+/** Whether input is instance of Uint8Array */
+export function isUint8Array(buffer: any): buffer is Uint8Array {
+  return ArrayBuffer.isView(buffer) && (buffer instanceof Uint8Array)
+    ? true
+    : false
+}

@@ -4,6 +4,7 @@ import {
 import { fromUint8Array } from './from_buffer'
 import {
   isArrayBuffer,
+  isUint8Array,
   parseDecodeInputBase64,
   parseEncodeInputString,
   parseTextDecoder,
@@ -34,7 +35,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   if (! buf) {
     throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
   }
-  else if (ArrayBuffer.isView(buf)) {
+  else if (isUint8Array(buf)) {
     input = buf
   }
   else if (isArrayBuffer(buf)) {

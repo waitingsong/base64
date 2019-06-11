@@ -1,6 +1,6 @@
 import { ErrorMsg } from './config'
 import {
-  isArrayBuffer, parseDecodeInputBase64, parseEncodeInputString,
+  isArrayBuffer, isUint8Array, parseDecodeInputBase64, parseEncodeInputString,
 } from './helper'
 
 
@@ -33,7 +33,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   if (! buf) {
     throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
   }
-  else if (ArrayBuffer.isView(buf)) {
+  else if (isUint8Array(buf)) {
     inst = Buffer.from(buf)
   }
   else if (isArrayBuffer(buf)) {
