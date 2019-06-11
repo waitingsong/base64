@@ -30,33 +30,36 @@ const filename = basename(__filename)
 const mods = rewire('../src/lib/helper')
 
 describe(filename, () => {
-  it('parseDecodeInputBase64() works with invalid input', () => {
-    [1, {}, null, true].forEach(input => {
-      try {
-        // @ts-ignore
-        parseDecodeInputBase64(input)
-        assert(false, 'Should throw error, but NOT')
-      }
-      catch (ex) {
-        assert(
-          ex.message && ex.message.includes(ErrorMsg.notString),
-          ex.message,
-        )
-      }
-    })
 
-    input9.forEach(input => {
-      try {
-        // @ts-ignore
-        parseDecodeInputBase64(input)
-        assert(false, 'Should throw error, but NOT')
-      }
-      catch (ex) {
-        assert(
-          ex.message && ex.message.includes(ErrorMsg.notValidB64String),
-          ex.message,
-        )
-      }
+  describe('parseDecodeInputBase64() works', () => {
+    it('with invalid input', () => {
+      [1, {}, null, true].forEach(input => {
+        try {
+          // @ts-ignore
+          parseDecodeInputBase64(input)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(
+            ex.message && ex.message.includes(ErrorMsg.notString),
+            ex.message,
+          )
+        }
+      })
+
+      input9.forEach(input => {
+        try {
+          // @ts-ignore
+          parseDecodeInputBase64(input)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(
+            ex.message && ex.message.includes(ErrorMsg.notValidB64String),
+            ex.message,
+          )
+        }
+      })
     })
   })
 
