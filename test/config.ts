@@ -119,3 +119,28 @@ export const input9 = [
   '*',
   '?',
 ]
+
+
+export const inputTypedArrayExcludingUint8Array = [
+  new Uint16Array(),
+  new Uint32Array(),
+  new Uint8ClampedArray(),
+  new Int8Array(),
+  new Int16Array(),
+  new Int32Array(),
+  new Float32Array(),
+  new Float64Array(),
+  new BigInt64Array(),
+]
+
+export const inputUint8Array = [
+  new Uint8Array(0),
+  new Uint8Array(1),
+  new Uint8Array(1024),
+]
+
+export const inputArrayBuffer = [
+  new ArrayBuffer(0),
+  new ArrayBuffer(1),
+  new ArrayBuffer(1024),
+]

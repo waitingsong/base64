@@ -13,6 +13,8 @@ import {
 
 import { ErrorMsg } from '../src/index'
 import {
+  isArrayBuffer,
+  isBrowser,
   parseDecodeInputBase64,
   parseEncodeInputString,
   parseTextDecoder,
@@ -20,7 +22,7 @@ import {
   validateEncoder,
 } from '../src/lib/helper'
 
-import { input9 } from './config'
+import { input44, input9, inputArrayBuffer, inputTypedArrayExcludingUint8Array, inputUint8Array } from './config'
 
 
 const filename = basename(__filename)
@@ -134,5 +136,27 @@ describe(filename, () => {
       }
     })
   })
+
+
+  describe('isArrayBuffer() works', () => {
+    it('with valid input', () => {
+      inputArrayBuffer.forEach(value => {
+        const ret = isArrayBuffer(value)
+        assert(ret === true)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = input44.concat(
+        inputTypedArrayExcludingUint8Array,
+        inputUint8Array,
+      )
+      arr.forEach(value => {
+        const ret = isArrayBuffer(value)
+        assert(ret === false)
+      })
+    })
+  })
+
 
 })

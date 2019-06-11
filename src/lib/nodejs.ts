@@ -1,6 +1,6 @@
 import { ErrorMsg } from './config'
 import {
-  parseDecodeInputBase64, parseEncodeInputString,
+  isArrayBuffer, parseDecodeInputBase64, parseEncodeInputString,
 } from './helper'
 
 
@@ -36,7 +36,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   else if (ArrayBuffer.isView(buf)) {
     inst = Buffer.from(buf)
   }
-  else if (buf instanceof ArrayBuffer) {
+  else if (isArrayBuffer(buf)) {
     inst = Buffer.from(buf)
   }
   else {

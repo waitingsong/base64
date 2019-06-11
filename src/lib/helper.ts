@@ -77,3 +77,9 @@ export function isBrowser(): boolean {
     : true
   return ret
 }
+
+
+/** Whether input is instance of ArrayBuffer */
+export function isArrayBuffer(buffer: any): boolean {
+  return buffer && buffer instanceof ArrayBuffer ? true : false
+}
