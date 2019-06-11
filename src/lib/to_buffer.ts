@@ -7,10 +7,7 @@ export function toUint8Array(b64: string): Uint8Array {
   const lens = getLens(b64)
   const validLen = lens[0]
   const placeHoldersLen = lens[1]
-
-  // const arr = new Uint8Array(_byteLength(b64, validLen, placeHoldersLen))
   const arr = new Uint8Array(_byteLength(validLen, placeHoldersLen))
-
   let curByte = 0
 
   // if there are placeholders, only get up to the last complete 4 chars
