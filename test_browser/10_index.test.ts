@@ -2,7 +2,7 @@
 
 import * as assert from 'power-assert'
 
-import { b64decode, b64encode, b64FromBuffer } from '../src/index'
+import { b64decode, b64encode, b64fromBuffer } from '../src/index'
 import { ErrorMsg } from '../src/lib/config'
 
 import {
@@ -74,11 +74,11 @@ describe(filename, () => {
   })
 
 
-  describe('Should b64FromBuffer() works', () => {
+  describe('Should b64fromBuffer() works', () => {
     it('with valid input', () => {
       input8.forEach(row => {
         const u8arr = Uint8Array.from(row[0])
-        const actual = b64FromBuffer(u8arr)
+        const actual = b64fromBuffer(u8arr)
         const expected = row[1]
         assert(actual === expected, `Ensure that ${u8arr} serialise to ${expected}`)
       })

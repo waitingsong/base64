@@ -40,7 +40,7 @@ export function b64decode(
 
 
 /** Encode to base64, source from ArrayBuffer or Uint8Array */
-export function b64FromBuffer(buffer: ArrayBuffer | Uint8Array): string {
+export function b64fromBuffer(buffer: ArrayBuffer | Uint8Array): string {
   const ret = defaultConfig.forceBrowser || isBrowser()
     ? nodeFromBuffer(buffer)
     : browserFromBuffer(buffer)

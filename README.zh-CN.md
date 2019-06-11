@@ -34,7 +34,7 @@ npm install @waiting/base64
 
 ### 编码
 ```ts
-import { b64encode } from '@waiting/base64'
+import { b64encode, b64fromBuffer } from '@waiting/base64'
 
 b64encode('A') === 'QQ=='
 b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8KCutw=='
@@ -43,7 +43,7 @@ b64encode('schöne') === 'c2Now7ZuZQ=='
 b64encode(1n) === b64encode(1) // 'MQ=='
 
 const u8arr = Uint8Array.from([0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87])
-b64FromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
+b64fromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
 ```
 
 ### 解码
