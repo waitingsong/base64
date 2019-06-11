@@ -10,6 +10,9 @@
     "rfc4648",
     "TextEncoder",
     "TextDecoder",
+    "buffer",
+    "ArrayBuffer",
+    "Uint8Array",
     "typescript",
     "ts"
   ],
