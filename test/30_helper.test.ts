@@ -6,11 +6,17 @@ import {
 } from '@waiting/shared-core'
 import * as assert from 'power-assert'
 import rewire = require('rewire')
+import {
+  TextDecoder as NodeTextDecoder,
+  TextEncoder as NodeTextEncoder,
+} from 'util'
 
 import { ErrorMsg } from '../src/index'
 import {
   parseDecodeInputBase64,
   parseEncodeInputString,
+  parseTextDecoder,
+  parseTextEncoder,
   validateEncoder,
 } from '../src/lib/helper'
 
@@ -68,6 +74,61 @@ describe(filename, () => {
       catch (ex) {
         assert(
           ex.message && ex.message.includes(ErrorMsg.textEncoderUndefined),
+          ex.message,
+        )
+      }
+    })
+  })
+
+
+  describe('parseTextEncoder() works', () => {
+    it('with valid input', () => {
+      const ret = parseTextEncoder(NodeTextEncoder)
+      assert(ret === NodeTextEncoder)
+    })
+
+    it('with invalid input', () => {
+      try {
+        // @ts-ignore
+        const ret = parseTextEncoder(null)
+        // node.js v11+ exports global TextEncoder
+        if (typeof TextEncoder === 'function') {
+          assert(true)
+        }
+        else {
+          assert(false, 'Should throw error, but NOT')
+        }
+      }
+      catch (ex) {
+        assert(
+          ex.message && ex.message.includes(ErrorMsg.textEncoderUndefined),
+          ex.message,
+        )
+      }
+    })
+  })
+
+  describe('parseTextDecoder() works', () => {
+    it('with valid input', () => {
+      const ret = parseTextDecoder(NodeTextDecoder)
+      assert(ret === NodeTextDecoder)
+    })
+
+    it('with invalid input', () => {
+      try {
+        // @ts-ignore
+        const ret = parseTextDecoder(null)
+        // node.js v11+ exports global TextDecoder
+        if (typeof TextDecoder === 'function') {
+          assert(true)
+        }
+        else {
+          assert(false, 'Should throw error, but NOT')
+        }
+      }
+      catch (ex) {
+        assert(
+          ex.message && ex.message.includes(ErrorMsg.textDecoderUndefined),
           ex.message,
         )
       }

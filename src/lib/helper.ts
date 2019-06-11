@@ -43,7 +43,7 @@ export function parseTextDecoder(textDecoder?: TextDecoderFn): TextDecoderFn {
     ? textDecoder
     : (typeof TextDecoder === 'function' ? TextDecoder : null)
 
-  validateEncoder(Decoder)
+  validateDecoder(Decoder)
   return <TextDecoderFn> Decoder
 }
 
@@ -52,6 +52,13 @@ export function parseTextDecoder(textDecoder?: TextDecoderFn): TextDecoderFn {
 export function validateEncoder(input: any): void {
   if (input === null) {
     throw new TypeError(ErrorMsg.textEncoderUndefined)
+  }
+}
+
+/** Throw error if input be null */
+export function validateDecoder(input: any): void {
+  if (input === null) {
+    throw new TypeError(ErrorMsg.textDecoderUndefined)
   }
 }
 
