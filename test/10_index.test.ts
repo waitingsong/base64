@@ -59,7 +59,9 @@ describe(filename, () => {
         const input = value.toString()
         const b64 = Buffer.from(input).toString('base64')
         const ret = b64decode(b64, 'utf8', TextDecoder)
+        const ret2 = b64decode(b64, (void 0), TextDecoder)
         assert(ret === input, input)
+        assert(ret2 === input, input)
       })
     })
 
@@ -68,8 +70,10 @@ describe(filename, () => {
         const input = value.toString()
         const b64 = Buffer.from(input).toString('base64')
         const ret = b64decode(b64, 'utf8', TextDecoder)
+        const ret2 = b64decode(b64, (void 0), TextDecoder)
         const code = ret.codePointAt(0)
 
+        assert(ret === ret2)
         assert(code && code === 65533, `input: "${input}", code: "${code}"`)
       })
     })
