@@ -12,10 +12,10 @@ import {
 } from 'util'
 
 import { ErrorMsg } from '../src/index'
+import { defaultConfig } from '../src/lib/config'
 import {
   fromBuffer,
-} from '../src/lib/browser'
-import { defaultConfig } from '../src/lib/config'
+} from '../src/lib/nodejs'
 
 import { input44, input8 } from './config'
 
