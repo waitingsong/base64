@@ -51,7 +51,7 @@ export function getLens(input: string): [number, number] {
   const len = input.length
 
   if (len & 3) {
-    throw new Error(ErrorMsg.encodeInvalidParam)
+    throw new Error(ErrorMsg.base64Invalidlength)
   }
 
   // Trim off extra bytes after placeholder bytes are found
