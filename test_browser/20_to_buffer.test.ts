@@ -2,7 +2,7 @@
 
 import * as assert from 'power-assert'
 
-import { b64ByteLength } from '../src'
+import { b64byteLength } from '../src'
 import { toUint8Array } from '../src/lib/to_buffer'
 
 import { input8 } from './config'
@@ -19,7 +19,7 @@ describe(filename, () => {
       const expected = Uint8Array.from(row[0])
 
       assert(equal(actual, expected), 'Ensure that ' + input + ' deserialise to ' + expected)
-      const byteLength = b64ByteLength(input)
+      const byteLength = b64byteLength(input)
       assert(byteLength === expected.length, 'Ensure that ' + input + ' has byte lentgh of ' + expected.length)
     })
   })

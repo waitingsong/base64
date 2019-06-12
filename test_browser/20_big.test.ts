@@ -2,7 +2,7 @@
 
 import * as assert from 'power-assert'
 
-import { b64decode, b64encode, b64ByteLength } from '../src'
+import { b64decode, b64encode, b64byteLength } from '../src'
 import { fromUint8Array } from '../src/lib/from_buffer'
 import { toUint8Array } from '../src/lib/to_buffer'
 
@@ -23,7 +23,7 @@ describe(filename, () => {
       const b64 = fromUint8Array(big)
       const u8arr = toUint8Array(b64)
       assert(equal(u8arr, big))
-      assert(b64ByteLength(b64) === u8arr.length)
+      assert(b64byteLength(b64) === u8arr.length)
     })
 
     it('test2', () => {
