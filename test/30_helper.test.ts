@@ -14,7 +14,6 @@ import {
 import { ErrorMsg } from '../src/index'
 import {
   isArrayBuffer,
-  isBrowser,
   isUint8Array,
   parseDecodeInputBase64,
   parseEncodeInputString,
