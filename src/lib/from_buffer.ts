@@ -59,11 +59,9 @@ function encodeChunk(input: Uint8Array, start: number, end: number): string {
 
 function tripletToBase64(pos: number): string {
   /* tslint:disable: no-bitwise */
-  const ret = lookup[pos >> 18 & 0x3F] +
+  return lookup[pos >> 18 & 0x3F] +
     lookup[pos >> 12 & 0x3F] +
     lookup[pos >> 6 & 0x3F] +
     lookup[pos & 0x3F]
-
   /* tslint:enable: no-bitwise */
-  return ret
 }
