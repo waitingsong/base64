@@ -7,8 +7,8 @@ import {
 import * as assert from 'power-assert'
 import rewire = require('rewire')
 
-import { b64byteLength } from '../src'
-import { toUint8Array } from '../src/lib/to_buffer'
+import { b64byteLength, ErrorMsg } from '../src'
+import { getLens, toUint8Array } from '../src/lib/to_buffer'
 
 import { input8 } from './config'
 import { equal } from './helper'
@@ -30,4 +30,20 @@ describe(filename, () => {
     })
   })
 
+  describe('Should getLens() works', () => {
+    it('throw error with invalid length of input', () => {
+      ['', 'a', 'ab', 'abc', 'abcde'].forEach(value => {
+        try {
+          getLens(value)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(
+            ex.message && ex.message.includes(ErrorMsg.base64Invalidlength),
+            ex.message,
+          )
+        }
+      })
+    })
+  })
 })

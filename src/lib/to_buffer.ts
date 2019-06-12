@@ -50,7 +50,7 @@ export function getLens(input: string): [number, number] {
   /* tslint:disable: no-bitwise */
   const len = input.length
 
-  if (len & 3) {
+  if (len & 3 || len <= 0) {
     throw new Error(ErrorMsg.base64Invalidlength)
   }
 
