@@ -21,6 +21,8 @@ import {
   parseTextEncoder,
   testB64,
   testB64URL,
+  validateB64,
+  validateB64URL,
   validateEncoder,
   validB64Chars,
   validB64URLChars,
@@ -201,37 +203,26 @@ describe(filename, () => {
   })
 
 
-  describe('validBase64Chars() works', () => {
+  describe('validateB64() works', () => {
     it('with valid input', () => {
       ['QQ=='].forEach(b64 => {
-        const ret = validB64Chars(b64)
-        assert(ret === true, b64.toString())
+        validateB64(b64)
       })
     })
 
     it('with invalid input', () => {
-      const arr = inputBase64CharsInvalid
-      arr.forEach((b64, idx) => {
-        const ret = validB64Chars(<any> b64)
-        assert(ret === false, `${ b64.toString()} : idx`)
-      })
-    })
-  })
-
-
-  describe('validBase64URLChars() works', () => {
-    it('with valid input', () => {
-      ['Q'].forEach(b64 => {
-        const ret = validB64URLChars(b64)
-        assert(ret === true)
-      })
-    })
-
-    it('with invalid input', () => {
-      const arr = inputBase64URLCharsInvalid
+      const arr = [
+        ...inputBase64CharsInvalid,
+        ...inputBase64Invalid,
+      ]
       arr.forEach(b64 => {
-        const ret = validB64URLChars(b64)
-        assert(ret === false, b64)
+        try {
+          validateB64(<any> b64)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(true)
+        }
       })
     })
   })
@@ -259,6 +250,50 @@ describe(filename, () => {
   })
 
 
+  describe('validBase64Chars() works', () => {
+    it('with valid input', () => {
+      ['QQ=='].forEach(b64 => {
+        const ret = validB64Chars(b64)
+        assert(ret === true, b64.toString())
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = inputBase64CharsInvalid
+      arr.forEach((b64, idx) => {
+        const ret = validB64Chars(<any> b64)
+        assert(ret === false, `${ b64.toString()} : idx`)
+      })
+    })
+  })
+
+
+  describe('validateB64URL() works', () => {
+    it('with valid input', () => {
+      ['QQ'].forEach(b64 => {
+        validateB64URL(b64)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = [
+        ...inputBase64URLCharsInvalid,
+        ...inputBase64CharsInvalid,
+        ...inputBase64URLInvalid,
+      ]
+      arr.forEach(b64 => {
+        try {
+          validateB64URL(<any> b64)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(true)
+        }
+      })
+    })
+  })
+
+
   describe('testBase64URL() works', () => {
     it('with valid input', () => {
       ['QQ'].forEach(b64 => {
@@ -276,6 +311,24 @@ describe(filename, () => {
       arr.forEach((b64: any) => {
         const ret = testB64URL(b64)
         assert(ret !== true, b64.toString())
+      })
+    })
+  })
+
+
+  describe('validBase64URLChars() works', () => {
+    it('with valid input', () => {
+      ['Q'].forEach(b64 => {
+        const ret = validB64URLChars(b64)
+        assert(ret === true)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = inputBase64URLCharsInvalid
+      arr.forEach(b64 => {
+        const ret = validB64URLChars(b64)
+        assert(ret === false, b64)
       })
     })
   })
