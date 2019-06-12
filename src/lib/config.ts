@@ -18,7 +18,8 @@ export const ErrorMsg = {
   fromArrayBufferInvalidParam: 'Invalid input, should be ArrayBuffer or Uint8Array',
   notString: 'Invalid value of parameter, should be string',
   notValidB64String: 'Valid base64 string only contains /^[a-zA-Z0-9+/_-]+={0,2}$/',
-  startMustGrossOrEqualToEnd:  'Parameters of start should less then end',
+  startMustGrossOrEqualToEnd:  'Parameters of start should less then or equal to end',
+  startMustGrossToEnd:  'Parameters of start should less then end',
   textEncoderUndefined: 'TextEncoder undefined!',
   textDecoderUndefined: 'TextDecoder undefined!',
 }

@@ -33,14 +33,14 @@ describe(filename, () => {
     const fn = <(input: Uint8Array, start: number, end: number) => string> mods.__get__(fnName)
 
     it('with invalid start/end value', () => {
-      [ [1, 0], [0, -1] ].forEach(([start, end]) => {
+      [ [1, 0], [0, -1], [1, 1], [0, 0] ].forEach(([start, end]) => {
         try {
           fn(inputUint8Array[0], start, end)
           assert(false, 'Should throw error, but NOT')
         }
         catch (ex) {
           assert(
-            ex.message && ex.message.includes(ErrorMsg.startMustGrossOrEqualToEnd),
+            ex.message && ex.message.includes(ErrorMsg.startMustGrossToEnd),
             ex.message,
           )
         }
