@@ -4,7 +4,7 @@ import {
 } from './helper'
 
 
-export function NodeEncode(
+export function nodeEncode(
   input: string | number | bigint,
 ): string {
 
@@ -14,7 +14,7 @@ export function NodeEncode(
   return ret
 }
 
-export function NodeDecode(
+export function nodeDecode(
   base64: string,
   outputEncoding: string,
 ): string {

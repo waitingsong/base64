@@ -8,8 +8,8 @@ import { isRunningInNodejs } from './helper'
 import { TextDecoderFn, TextEncoderFn } from './model'
 import {
   fromBuffer as nodeFromBuffer,
-  NodeDecode,
-  NodeEncode,
+  nodeDecode,
+  nodeEncode,
 } from './nodejs'
 import { getLens, _byteLength } from './to_buffer'
 
@@ -20,7 +20,7 @@ export function b64encode(
 ): string {
 
   const ret = isRunningInNodejs() && ! defaultConfig.forceBrowser
-    ? NodeEncode(input)
+    ? nodeEncode(input)
     : browserEncode(input, textEncoder)
   return ret
 }
@@ -34,7 +34,7 @@ export function b64decode(
 ): string {
 
   const ret = isRunningInNodejs() && ! defaultConfig.forceBrowser
-    ? NodeDecode(base64, outputEncoding)
+    ? nodeDecode(base64, outputEncoding)
     : browserDecode(base64, outputEncoding, textDecoder)
   return ret
 }
