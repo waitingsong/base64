@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/waitingsong/base64/compare/v2.2.0...v3.0.0) (2019-06-12)
+
+
+### Bug Fixes
+
+* error message with getLens() ([7ca94fb](https://github.com/waitingsong/base64/commit/7ca94fb))
+
+
+### Features
+
+* zero length of base64 not allowed of getLens() ([52e0be1](https://github.com/waitingsong/base64/commit/52e0be1))
+
+
+### Tests
+
+* fix import name ([a79854f](https://github.com/waitingsong/base64/commit/a79854f))
+
+
+
 ## [2.2.0](https://github.com/waitingsong/base64/compare/v2.1.0...v2.2.0) (2019-06-11)
 
 
