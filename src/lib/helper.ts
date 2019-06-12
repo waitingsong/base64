@@ -147,7 +147,7 @@ export function isUint8Array(buffer: any): buffer is Uint8Array {
 
 
 /**
- * Convert base64 string to URL-safe string.
+ * Convert base64 string to URL-safe base64 string.
  * Replace "+" to "-" and "/" to "_", and Remove "="
  *
  * @see https://en.wikipedia.org/wiki/Base64#URL_applications
