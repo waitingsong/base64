@@ -14,6 +14,7 @@ import {
 import { getLens, _byteLength } from './to_buffer'
 
 
+/** Encode to base64, source from string */
 export function b64encode(
   input: string | number | bigint,
   textEncoder?: TextEncoderFn,
@@ -26,7 +27,7 @@ export function b64encode(
 }
 
 
-/** Encode to base64, source from string */
+/** Decode base64 to string */
 export function b64decode(
   base64: string,
   outputEncoding: string = 'utf-8',
@@ -60,3 +61,4 @@ export function b64byteLength(base64: string): number {
   const placeHoldersLen = lens[1]
   return _byteLength(validLen, placeHoldersLen)
 }
+
