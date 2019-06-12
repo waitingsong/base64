@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/waitingsong/base64/compare/v4.0.1...v4.1.0) (2019-06-12)
+
+
+### Features
+
+* b64fromURLSafe() Convert URL-safe base64 string to base64 string ([cf267ff](https://github.com/waitingsong/base64/commit/cf267ff))
+* b64urlDecode() Decode URL-safe base64 to original string ([a30ba9d](https://github.com/waitingsong/base64/commit/a30ba9d))
+* b64urlEncode() Encode to URL-safe base64 ([0129fc7](https://github.com/waitingsong/base64/commit/0129fc7))
+
+
+
 ### [4.0.1](https://github.com/waitingsong/base64/compare/v4.0.0...v4.0.1) (2019-06-12)
 
 
