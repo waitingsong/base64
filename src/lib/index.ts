@@ -65,7 +65,11 @@ export function b64byteLength(base64: string): number {
 
 /**
  * Encode to URL-safe base64, source from string|number|bigint.
- * Replace "+" to "-" and "/" to "_", and Remove "="
+ * Replace "+" to "-" and "/" to "_", and Remove "=".
+ *
+ * Note: using b64toURLSafe() for converting base64 string to URL-safe base64 string
+ *
+ * @see https://en.wikipedia.org/wiki/Base64#URL_applications
  */
 export function b64urlEncode(
   input: string,
