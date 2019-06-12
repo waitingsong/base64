@@ -70,12 +70,13 @@ export function validB64Chars(input: string): boolean {
 }
 
 
-export function isBrowser(): boolean {
+/** Whether running in Node.js */
+export function isRunningInNodejs(): boolean {
   // Buffer exists under karma testing
-  const ret = typeof Buffer === 'function' && typeof window === 'undefined'
-    ? false
-    : true
-  return ret
+  /* istanbul ignore next */
+  return typeof process === 'object' && typeof Buffer === 'function' && typeof window === 'undefined'
+    ? true
+    : false
 }
 
 
