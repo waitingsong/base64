@@ -6,6 +6,7 @@ import {
 export const input1: Array<string | number | bigint> = [
   baseChars,
   'a\'b"c<d>e&f=g/[].,:;+-_`~!@#$%^&*(){}*\\ ',
+  'A',
   '  ',
   ' ',
   '\r\n',
@@ -28,6 +29,7 @@ export const input1: Array<string | number | bigint> = [
 export const base1: string[] = [
   'QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVphYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ejAxMjM0NTY3ODkrLw==',
   'YSdiImM8ZD5lJmY9Zy9bXS4sOjsrLV9gfiFAIyQlXiYqKCl7fSpcIA==',
+  'QQ==',
   'ICA=',
   'IA==',
   'DQo=',
@@ -143,4 +145,55 @@ export const inputArrayBuffer = [
   new ArrayBuffer(0),
   new ArrayBuffer(1),
   new ArrayBuffer(1024),
+]
+
+
+export const inputURLSafe = [
+  ['中文测试', '5Lit5paH5rWL6K+V', '5Lit5paH5rWL6K-V'],
+  ['Привет, мир!', '0J/RgNC40LLQtdGCLCDQvNC40YAh', '0J_RgNC40LLQtdGCLCDQvNC40YAh'],
+  ['A', 'QQ==', 'QQ'],
+]
+
+export const inputURLSafe2 = [
+  'A', 'QQ', '=QQ', 'Q=Q',
+]
+
+export const inputBase64CharsInvalid = [
+  '',
+  '!@(^*',
+  'AB!!',
+  'QQ===',
+  '=QQ==',
+  '=QQ=',
+  '=QQ',
+]
+export const inputBase64Invalid = [
+  0,
+  '',
+  'Q',
+  'QQ',
+  'QQQ',
+  'QQQQQ',
+  'Q=QQ',
+  'QQQ==',
+  'QQ===',
+  '=QQ==',
+  '=QQ=',
+  '=QQ',
+]
+
+export const inputBase64URLCharsInvalid = [
+  '',
+  '!@(^*',
+  'AB!!',
+  'QQ===',
+  'QQ==',
+  '=QQ==',
+  '=QQ',
+  'QQ+/',
+]
+export const inputBase64URLInvalid = [
+  0,
+  '',
+  'Q',
 ]

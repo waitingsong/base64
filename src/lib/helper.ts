@@ -65,8 +65,61 @@ export function validateDecoder(input: any): void {
 
 /** Whether string contains valid base64 characters */
 export function validB64Chars(input: string): boolean {
-  const valid = /^[a-zA-Z0-9+/_-]+={0,2}$/.test(input)
-  return valid
+  return /^[a-zA-Z0-9+/_-]+={0,2}$/.test(input)
+}
+
+/** Whether string contains valid URL-safe base64 characters */
+export function validB64URLChars(input: string): boolean {
+  return /^[a-zA-Z0-9_-]+$/.test(input)
+}
+
+/** Validate input is valid base64 string or throw error */
+export function validateB64(input: string): void {
+  const status = testB64(input)
+  if (status !== true) {
+    throw new Error(status)
+  }
+}
+
+/** Validate input is valid URL-safe base64 string or throw error */
+export function validateB64URL(input: string): void {
+  const status = testB64URL(input)
+  if (status !== true) {
+    throw new Error(status)
+  }
+}
+
+/** Return true for valid base64 input, error message for invalid */
+export function testB64(input: string): true | string {
+  if (typeof input !== 'string') {
+    return ErrorMsg.notString
+  }
+  else if (! validB64Chars(input)) {
+    return ErrorMsg.notValidB64String
+  }
+  else if (input.length < 4) {
+    return ErrorMsg.notValidB64Length
+  }
+  else if (input.length % 4 !== 0) {
+    return ErrorMsg.base64Invalidlength
+  }
+
+  return true
+}
+
+/** Return true for valid URL-safe base64 input,  error message for invalid */
+export function testB64URL(input: string): true | string {
+  if (typeof input !== 'string') {
+    return ErrorMsg.notString
+  }
+  else if (! validB64URLChars(input)) {
+    return ErrorMsg.notValidB64URLString
+  }
+  else if (input.length < 2) {  // URL-safe at least 2
+    return ErrorMsg.notValidB64URLLength
+  }
+
+  return true
 }
 
 

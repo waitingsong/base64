@@ -1,10 +1,11 @@
 
 export const baseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-export const lookup: string[] = [...baseChars]
+export const lookup: string[] = []
 export const revLookup: number[] = []
 
-for (let i = 0, len = lookup.length; i < len; ++i) {
-  revLookup[lookup[i].charCodeAt(0)] = i
+for (let i = 0, len = baseChars.length; i < len; ++i) {
+  lookup[i] = baseChars[i]
+  revLookup[baseChars.charCodeAt(i)] = i
 }
 
 // Support decoding URL-safe base64 strings, as Node.js does.
@@ -14,10 +15,14 @@ revLookup['_'.charCodeAt(0)] = 63
 
 export const ErrorMsg = {
   base64Invalidlength: 'Invalid string. Length must be a multiple of 4 and positive',
+  base64InvalidEqualPosition: 'Invalid base64 string, char "=" should not exists or at posiont >= 2',
   encodeInvalidParam: 'Invalid value of parameter of encode(), should be string|number|bigint',
   fromArrayBufferInvalidParam: 'Invalid input, should be ArrayBuffer or Uint8Array',
   notString: 'Invalid value of parameter, should be string',
-  notValidB64String: 'Valid base64 string only contains /^[a-zA-Z0-9+/_-]+={0,2}$/',
+  notValidB64String: 'Valid base64 string only matches /^[a-zA-Z0-9+/_-]+={0,2}$/',
+  notValidB64URLString: 'Valid URL-safe base64 string only matchs /^[a-zA-Z0-9_-]+$/',
+  notValidB64Length: 'Valid base64 string contains as least 4 chars',
+  notValidB64URLLength: 'Valid URL-safe base64 string contains as least 2 chars',
   startMustGrossOrEqualToEnd:  'Parameters of start should less then or equal to end',
   startMustGrossToEnd:  'Parameters of start should less then end',
   textEncoderUndefined: 'TextEncoder undefined!',

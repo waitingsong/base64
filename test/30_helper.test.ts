@@ -19,10 +19,26 @@ import {
   parseEncodeInputString,
   parseTextDecoder,
   parseTextEncoder,
+  testB64,
+  testB64URL,
   validateEncoder,
+  validB64Chars,
+  validB64URLChars,
 } from '../src/lib/helper'
 
-import { input44, input9, inputArrayBuffer, inputTypedArrayExcludingUint8Array, inputUint8Array } from './config'
+import {
+  input44,
+  input9,
+  inputArrayBuffer,
+  inputBase64CharsInvalid,
+  inputBase64Invalid,
+  inputBase64URLCharsInvalid,
+  inputBase64URLInvalid,
+  inputTypedArrayExcludingUint8Array,
+  inputUint8Array,
+  inputURLSafe,
+  inputURLSafe2,
+} from './config'
 
 
 const filename = basename(__filename)
@@ -150,10 +166,11 @@ describe(filename, () => {
     })
 
     it('with invalid input', () => {
-      const arr = input44.concat(
-        inputTypedArrayExcludingUint8Array,
-        inputUint8Array,
-      )
+      const arr = [
+        ...input44,
+        ...inputTypedArrayExcludingUint8Array,
+        ...inputUint8Array,
+      ]
       arr.forEach(value => {
         const ret = isArrayBuffer(value)
         assert(ret === false)
@@ -171,13 +188,94 @@ describe(filename, () => {
     })
 
     it('with invalid input', () => {
-      const arr = input44.concat(
-        inputTypedArrayExcludingUint8Array,
-        inputArrayBuffer,
-      )
+      const arr = [
+        ...input44,
+        ...inputTypedArrayExcludingUint8Array,
+        ...inputArrayBuffer,
+      ]
       arr.forEach(value => {
         const ret = isUint8Array(value)
         assert(ret === false)
+      })
+    })
+  })
+
+
+  describe('validBase64Chars() works', () => {
+    it('with valid input', () => {
+      ['QQ=='].forEach(b64 => {
+        const ret = validB64Chars(b64)
+        assert(ret === true, b64.toString())
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = inputBase64CharsInvalid
+      arr.forEach((b64, idx) => {
+        const ret = validB64Chars(<any> b64)
+        assert(ret === false, `${ b64.toString()} : idx`)
+      })
+    })
+  })
+
+
+  describe('validBase64URLChars() works', () => {
+    it('with valid input', () => {
+      ['Q'].forEach(b64 => {
+        const ret = validB64URLChars(b64)
+        assert(ret === true)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = inputBase64URLCharsInvalid
+      arr.forEach(b64 => {
+        const ret = validB64URLChars(b64)
+        assert(ret === false, b64)
+      })
+    })
+  })
+
+
+  describe('testBase64() works', () => {
+    it('with valid input', () => {
+      ['QQ=='].forEach(b64 => {
+        const ret = testB64(b64)
+        assert(ret === true)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = [
+        ...inputBase64CharsInvalid,
+        ...inputBase64Invalid,
+      ]
+      arr.forEach(b64 => {
+        const ret = testB64(<any> b64)
+        assert(ret !== true, b64.toString())
+      })
+
+    })
+  })
+
+
+  describe('testBase64URL() works', () => {
+    it('with valid input', () => {
+      ['QQ'].forEach(b64 => {
+        const ret = testB64URL(b64)
+        assert(ret === true)
+      })
+    })
+
+    it('with invalid input', () => {
+      const arr = [
+        ...inputBase64URLCharsInvalid,
+        ...inputBase64CharsInvalid,
+        ...inputBase64URLInvalid,
+      ]
+      arr.forEach((b64: any) => {
+        const ret = testB64URL(b64)
+        assert(ret !== true, b64.toString())
       })
     })
   })
