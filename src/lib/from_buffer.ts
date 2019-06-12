@@ -39,13 +39,15 @@ export function fromUint8Array(input: Uint8Array): string {
 
 
 function encodeChunk(input: Uint8Array, start: number, end: number): string {
-  /* tslint:disable: no-bitwise */
   if (start > end) {
     throw new Error(ErrorMsg.startMustGrossOrEqualToEnd)
   }
-  const ret: string[] = new Array((end - start) / 3)
-  for (let i = start, curTriplet = 0; i < end; i += 3) {
-    ret[curTriplet++] = tripletToBase64(
+  const arrLen = Math.ceil((end - start) / 3)
+  const ret: string[] = new Array(arrLen)
+
+  /* tslint:disable: no-bitwise */
+  for (let i = start, curTriplet = 0; i < end; i += 3, curTriplet += 1) {
+    ret[curTriplet] = tripletToBase64(
       (input[i] & 0xFF) << 16 |
       (input[i + 1] & 0xFF) << 8 |
       (input[i + 2] & 0xFF),
