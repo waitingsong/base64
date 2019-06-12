@@ -51,7 +51,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
 
 export function browserDecode(
   base64: string,
-  outputEncoding: string = 'utf-8',
+  outputEncoding: string,
   textDecoder?: TextDecoderFn,
 ): string {
 

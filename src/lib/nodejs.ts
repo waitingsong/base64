@@ -16,7 +16,7 @@ export function NodeEncode(
 
 export function NodeDecode(
   base64: string,
-  outputEncoding: string = 'utf-8',
+  outputEncoding: string,
 ): string {
 
   const str = parseDecodeInputBase64(base64)
