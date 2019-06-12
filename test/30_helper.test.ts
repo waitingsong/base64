@@ -13,6 +13,7 @@ import {
 
 import { ErrorMsg } from '../src/index'
 import {
+  b64toURLSafe,
   isArrayBuffer,
   isUint8Array,
   parseDecodeInputBase64,
@@ -333,5 +334,28 @@ describe(filename, () => {
     })
   })
 
+
+  describe('base64ToURLSafe() works', () => {
+    it('with valid input', () => {
+      inputURLSafe.forEach(([str, b64, b64url]) => {
+        const ret = b64toURLSafe(b64)
+        const b64node = Buffer.from(str).toString('base64')
+        assert(ret === b64url, `"${ret}" !== "${b64url}"`)
+        assert(b64 === b64node, `${b64} !== ${b64node}`)
+      })
+    })
+
+    it('with invalid input', () => {
+      inputURLSafe2.forEach(b64 => {
+        try {
+          b64toURLSafe(b64)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(true)
+        }
+      })
+    })
+  })
 
 })

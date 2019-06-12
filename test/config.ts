@@ -155,7 +155,11 @@ export const inputURLSafe = [
 ]
 
 export const inputURLSafe2 = [
-  'A', 'QQ', '=QQ', 'Q=Q',
+  'A',
+  'QQ',
+  '=QQ',
+  'Q=Q',
+  'AABB\nAABB',
 ]
 
 export const inputBase64CharsInvalid = [
@@ -166,6 +170,7 @@ export const inputBase64CharsInvalid = [
   '=QQ==',
   '=QQ=',
   '=QQ',
+  'AABB\nAABB',
 ]
 export const inputBase64Invalid = [
   0,
@@ -180,6 +185,7 @@ export const inputBase64Invalid = [
   '=QQ==',
   '=QQ=',
   '=QQ',
+  'AABB\nAABB',
 ]
 
 export const inputBase64URLCharsInvalid = [
@@ -191,9 +197,11 @@ export const inputBase64URLCharsInvalid = [
   '=QQ==',
   '=QQ',
   'QQ+/',
+  'AABB\nAABB',
 ]
 export const inputBase64URLInvalid = [
   0,
   '',
   'Q',
+  'AABB\nAABB',
 ]

@@ -144,3 +144,18 @@ export function isUint8Array(buffer: any): buffer is Uint8Array {
     ? true
     : false
 }
+
+
+/**
+ * Convert base64 string to URL-safe string.
+ * Replace "+" to "-" and "/" to "_", and Remove "="
+ *
+ * @see https://en.wikipedia.org/wiki/Base64#URL_applications
+ */
+export function b64toURLSafe(base64: string): string {
+  validateB64(base64)
+  const pos = base64.indexOf('=')
+  return pos > 0
+    ? base64.slice(0, pos).replace(/\+/g, '-').replace(/\//g, '_')
+    : base64.replace(/\+/g, '-').replace(/\//g, '_')
+}
