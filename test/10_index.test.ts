@@ -9,10 +9,10 @@ import * as assert from 'power-assert'
 import rewire = require('rewire')
 import { TextDecoder, TextEncoder } from 'util'
 
-import { b64decode, b64encode, b64fromBuffer } from '../src/index'
+import { b64decode, b64encode, b64fromBuffer, b64urlEncode } from '../src/index'
 import { defaultConfig, ErrMsg } from '../src/lib/config'
 
-import { input1, input2, input3, input4, input44, input5, input8 } from './config'
+import { input1, input2, input3, input4, input44, input5, input8, inputURLSafe, inputURLSafe2 } from './config'
 
 
 const filename = basename(__filename)
@@ -79,6 +79,7 @@ describe(filename, () => {
     })
   })
 
+
   describe('Should b64fromBuffer() works', () => {
     it('with valid input', () => {
       input8.forEach(row => {
@@ -86,6 +87,30 @@ describe(filename, () => {
         const actual = b64fromBuffer(u8arr)
         const expected = row[1]
         assert(actual === expected, `Ensure that ${u8arr} serialise to ${expected}`)
+      })
+    })
+  })
+
+
+  describe('Should b64urlEncode() works', () => {
+    it('with valid input', () => {
+      inputURLSafe.forEach(([str, b64, b64url]) => {
+        const ret = b64urlEncode(str, TextEncoder)
+        const b64node = Buffer.from(str).toString('base64')
+        assert(ret === b64url, `"${ret}" !== "${b64url}"`)
+        assert(b64 === b64node, `${b64} !== ${b64node}`)
+      })
+    })
+
+    it('with invalid input', () => {
+      inputURLSafe2.forEach(b64 => {
+        try {
+          b64urlEncode(b64, TextEncoder)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(true)
+        }
       })
     })
   })

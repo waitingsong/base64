@@ -4,7 +4,7 @@ import {
   fromBuffer as browserFromBuffer,
 } from './browser'
 import { defaultConfig } from './config'
-import { isRunningInNodejs } from './helper'
+import { b64toURLSafe, isRunningInNodejs } from './helper'
 import { TextDecoderFn, TextEncoderFn } from './model'
 import {
   fromBuffer as nodeFromBuffer,
@@ -60,4 +60,18 @@ export function b64byteLength(base64: string): number {
   const validLen = lens[0]
   const placeHoldersLen = lens[1]
   return _byteLength(validLen, placeHoldersLen)
+}
+
+
+/**
+ * Encode to URL-safe base64, source from string|number|bigint.
+ * Replace "+" to "-" and "/" to "_", and Remove "="
+ */
+export function b64urlEncode(
+  input: string,
+  textEncoder?: TextEncoderFn,
+): string {
+
+  const b64 = b64encode(input, textEncoder)
+  return b64toURLSafe(b64)
 }
