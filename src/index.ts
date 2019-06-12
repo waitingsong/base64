@@ -3,6 +3,7 @@ export * from './lib/index'
 export * from './lib/model'
 export { ErrMsg } from './lib/config'
 export {
+  b64fromURLSafe,
   b64toURLSafe,
   isArrayBuffer,
   isUint8Array,

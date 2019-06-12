@@ -11,8 +11,9 @@ import {
   TextEncoder as NodeTextEncoder,
 } from 'util'
 
-import { ErrMsg } from '../src/index'
+import { b64decode, ErrMsg } from '../src/index'
 import {
+  b64fromURLSafe,
   b64toURLSafe,
   isArrayBuffer,
   isUint8Array,
@@ -335,7 +336,7 @@ describe(filename, () => {
   })
 
 
-  describe('base64ToURLSafe() works', () => {
+  describe('b64toURLSafe() works', () => {
     it('with valid input', () => {
       inputURLSafe.forEach(([str, b64, b64url]) => {
         const ret = b64toURLSafe(b64)
@@ -357,5 +358,32 @@ describe(filename, () => {
       })
     })
   })
+
+
+  describe('b64fromURLSafe() works', () => {
+    it('with valid input', () => {
+      inputURLSafe.forEach(([str, b64, b64url]) => {
+        const bb = b64fromURLSafe(b64url)
+        const b64node = Buffer.from(str).toString('base64')
+        const str2 = b64decode(bb)
+        assert(bb === b64, `"0: ${bb}" !== "${b64}"`)
+        assert(b64 === b64node, `1: ${b64} !== ${b64node}`)
+        assert(str2 === str, `2: ${str2} !== ${str}`)
+      })
+    })
+
+    it('with invalid input', () => {
+      inputURLSafe2.forEach(b64 => {
+        try {
+          b64fromURLSafe(b64)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(true)
+        }
+      })
+    })
+  })
+
 
 })

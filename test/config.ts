@@ -148,10 +148,12 @@ export const inputArrayBuffer = [
 ]
 
 
+/** [string, base64, URL-safe base64] */
 export const inputURLSafe = [
   ['中文测试', '5Lit5paH5rWL6K+V', '5Lit5paH5rWL6K-V'],
   ['Привет, мир!', '0J/RgNC40LLQtdGCLCDQvNC40YAh', '0J_RgNC40LLQtdGCLCDQvNC40YAh'],
   ['A', 'QQ==', 'QQ'],
+  ['12345678901234567890', 'MTIzNDU2Nzg5MDEyMzQ1Njc4OTA=', 'MTIzNDU2Nzg5MDEyMzQ1Njc4OTA'],
 ]
 
 export const inputURLSafe2 = [

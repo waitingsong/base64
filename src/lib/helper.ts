@@ -159,3 +159,27 @@ export function b64toURLSafe(base64: string): string {
     ? base64.slice(0, pos).replace(/\+/g, '-').replace(/\//g, '_')
     : base64.replace(/\+/g, '-').replace(/\//g, '_')
 }
+
+
+/**
+ * Convert URL-safe base64 string to base64 string.
+ * Replace "-" to "+" and "_" to "/", and pad with "="
+ *
+ * @see https://en.wikipedia.org/wiki/Base64#URL_applications
+ */
+export function b64fromURLSafe(base64: string): string {
+  validateB64URL(base64)
+  const str = base64.replace(/-/g, '+').replace(/_/g, '/')
+  let num = 0
+  const mo = str.length % 4
+  switch (mo) {
+    case 3:
+      num = 1
+      break
+    case 2:
+      num = 2
+      break
+  }
+
+  return str + '='.repeat(num)
+}
