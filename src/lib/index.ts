@@ -4,7 +4,7 @@ import {
   fromBuffer as browserFromBuffer,
 } from './browser'
 import { defaultConfig } from './config'
-import { b64toURLSafe, isRunningInNodejs } from './helper'
+import { b64toURLSafe, b64PadSuffix, isRunningInNodejs } from './helper'
 import { TextDecoderFn, TextEncoderFn } from './model'
 import {
   fromBuffer as nodeFromBuffer,
@@ -78,4 +78,22 @@ export function b64urlEncode(
 
   const b64 = b64encode(input, textEncoder)
   return b64toURLSafe(b64)
+}
+
+
+/**
+ * Decode URL-safe base64 to original string.
+ *
+ * Note: using b64fromURLSafe() for converting URL-safe base64 string to base64 string
+ *
+ * @see https://en.wikipedia.org/wiki/Base64#URL_applications
+ */
+export function b64urlDecode(
+  input: string,
+  outputEncoding: string = 'utf-8',
+  textDecoder?: TextDecoderFn,
+): string {
+
+  const str = b64PadSuffix(input) // for URL-safe
+  return b64decode(str, outputEncoding, textDecoder)
 }

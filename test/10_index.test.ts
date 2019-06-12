@@ -9,7 +9,7 @@ import * as assert from 'power-assert'
 import rewire = require('rewire')
 import { TextDecoder, TextEncoder } from 'util'
 
-import { b64decode, b64encode, b64fromBuffer, b64urlEncode } from '../src/index'
+import { b64decode, b64encode, b64fromBuffer, b64urlDecode, b64urlEncode } from '../src/index'
 import { defaultConfig, ErrMsg } from '../src/lib/config'
 
 import { input1, input2, input3, input4, input44, input5, input8, inputURLSafe, inputURLSafe2 } from './config'
@@ -114,5 +114,31 @@ describe(filename, () => {
       })
     })
   })
+
+
+  describe('Should b64urlDecode() works', () => {
+    it('with valid input', () => {
+      inputURLSafe.forEach(([input, b64, b64url]) => {
+        const ret1 = b64urlDecode(b64, 'utf8', TextDecoder)
+        const ret2 = b64urlDecode(b64url, (void 0), TextDecoder)
+
+        assert(ret1 === ret2, `0: "${ret1}" !== "${ret2}"`)
+        assert(ret1 === input, `1: "${ret1}" !== "${input}"`)
+      })
+    })
+
+    it('with invalid input', () => {
+      inputURLSafe2.forEach(b64 => {
+        try {
+          b64urlDecode(b64, 'utf8', TextDecoder)
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          assert(true)
+        }
+      })
+    })
+  })
+
 
 })

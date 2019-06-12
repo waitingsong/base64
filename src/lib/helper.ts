@@ -170,8 +170,13 @@ export function b64toURLSafe(base64: string): string {
 export function b64fromURLSafe(base64: string): string {
   validateB64URL(base64)
   const str = base64.replace(/-/g, '+').replace(/_/g, '/')
+  return b64PadSuffix(str)
+}
+
+
+export function b64PadSuffix(input: string): string {
   let num = 0
-  const mo = str.length % 4
+  const mo = input.length % 4
   switch (mo) {
     case 3:
       num = 1
@@ -179,7 +184,12 @@ export function b64fromURLSafe(base64: string): string {
     case 2:
       num = 2
       break
+    case 0:
+      num = 0
+      break
+    default:
+      throw new Error(ErrMsg.notValidB64URLLength)
   }
 
-  return str + '='.repeat(num)
+  return input + '='.repeat(num)
 }
