@@ -11,7 +11,7 @@ import {
   TextEncoder as NodeTextEncoder,
 } from 'util'
 
-import { ErrorMsg } from '../src/index'
+import { ErrMsg } from '../src/index'
 import {
   fromBuffer,
 } from '../src/lib/browser'
@@ -59,7 +59,7 @@ describe(filename, () => {
         }
         catch (ex) {
           assert(
-            ex.message && ex.message.includes(ErrorMsg.fromArrayBufferInvalidParam),
+            ex.message && ex.message.includes(ErrMsg.fromArrayBufferInvalidParam),
             ex.message,
           )
         }

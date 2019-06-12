@@ -7,7 +7,7 @@ import {
 import * as assert from 'power-assert'
 import rewire = require('rewire')
 
-import { ErrorMsg } from '../src'
+import { ErrMsg } from '../src'
 import { fromUint8Array } from '../src/lib/from_buffer'
 
 import { input8, inputUint8Array } from './config'
@@ -40,7 +40,7 @@ describe(filename, () => {
         }
         catch (ex) {
           assert(
-            ex.message && ex.message.includes(ErrorMsg.startMustGrossToEnd),
+            ex.message && ex.message.includes(ErrMsg.startMustGrossToEnd),
             ex.message,
           )
         }

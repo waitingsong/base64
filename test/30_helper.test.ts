@@ -11,7 +11,7 @@ import {
   TextEncoder as NodeTextEncoder,
 } from 'util'
 
-import { ErrorMsg } from '../src/index'
+import { ErrMsg } from '../src/index'
 import {
   b64toURLSafe,
   isArrayBuffer,
@@ -59,7 +59,7 @@ describe(filename, () => {
         }
         catch (ex) {
           assert(
-            ex.message && ex.message.includes(ErrorMsg.notString),
+            ex.message && ex.message.includes(ErrMsg.notString),
             ex.message,
           )
         }
@@ -73,7 +73,7 @@ describe(filename, () => {
         }
         catch (ex) {
           assert(
-            ex.message && ex.message.includes(ErrorMsg.notValidB64String),
+            ex.message && ex.message.includes(ErrMsg.notValidB64String),
             ex.message,
           )
         }
@@ -97,7 +97,7 @@ describe(filename, () => {
       }
       catch (ex) {
         assert(
-          ex.message && ex.message.includes(ErrorMsg.textEncoderUndefined),
+          ex.message && ex.message.includes(ErrMsg.textEncoderUndefined),
           ex.message,
         )
       }
@@ -125,7 +125,7 @@ describe(filename, () => {
       }
       catch (ex) {
         assert(
-          ex.message && ex.message.includes(ErrorMsg.textEncoderUndefined),
+          ex.message && ex.message.includes(ErrMsg.textEncoderUndefined),
           ex.message,
         )
       }
@@ -152,7 +152,7 @@ describe(filename, () => {
       }
       catch (ex) {
         assert(
-          ex.message && ex.message.includes(ErrorMsg.textDecoderUndefined),
+          ex.message && ex.message.includes(ErrMsg.textDecoderUndefined),
           ex.message,
         )
       }

@@ -1,4 +1,4 @@
-import { ErrorMsg } from './config'
+import { ErrMsg } from './config'
 import { TextDecoderFn, TextEncoderFn } from './model'
 
 
@@ -9,7 +9,7 @@ export function parseEncodeInputString(input: string | number | bigint): string 
     : (typeof input === 'number' || typeof input === 'bigint' ? input.toString() : null)
 
   if (ret === null) {
-    throw new TypeError(ErrorMsg.encodeInvalidParam)
+    throw new TypeError(ErrMsg.encodeInvalidParam)
   }
 
   return ret
@@ -18,10 +18,10 @@ export function parseEncodeInputString(input: string | number | bigint): string 
 
 export function parseDecodeInputBase64(base64: string): string {
   if (typeof base64 !== 'string') {
-    throw new TypeError(ErrorMsg.notString)
+    throw new TypeError(ErrMsg.notString)
   }
   else if (!validB64Chars(base64)) {
-    throw new TypeError(ErrorMsg.notValidB64String)
+    throw new TypeError(ErrMsg.notValidB64String)
   }
 
   return base64
@@ -51,14 +51,14 @@ export function parseTextDecoder(textDecoder?: TextDecoderFn): TextDecoderFn {
 /** Throw error if input be null */
 export function validateEncoder(input: any): void {
   if (input === null) {
-    throw new TypeError(ErrorMsg.textEncoderUndefined)
+    throw new TypeError(ErrMsg.textEncoderUndefined)
   }
 }
 
 /** Throw error if input be null */
 export function validateDecoder(input: any): void {
   if (input === null) {
-    throw new TypeError(ErrorMsg.textDecoderUndefined)
+    throw new TypeError(ErrMsg.textDecoderUndefined)
   }
 }
 
@@ -92,16 +92,16 @@ export function validateB64URL(input: string): void {
 /** Return true for valid base64 input, error message for invalid */
 export function testB64(input: string): true | string {
   if (typeof input !== 'string') {
-    return ErrorMsg.notString
+    return ErrMsg.notString
   }
   else if (! validB64Chars(input)) {
-    return ErrorMsg.notValidB64String
+    return ErrMsg.notValidB64String
   }
   else if (input.length < 4) {
-    return ErrorMsg.notValidB64Length
+    return ErrMsg.notValidB64Length
   }
   else if (input.length % 4 !== 0) {
-    return ErrorMsg.base64Invalidlength
+    return ErrMsg.base64Invalidlength
   }
 
   return true
@@ -110,13 +110,13 @@ export function testB64(input: string): true | string {
 /** Return true for valid URL-safe base64 input,  error message for invalid */
 export function testB64URL(input: string): true | string {
   if (typeof input !== 'string') {
-    return ErrorMsg.notString
+    return ErrMsg.notString
   }
   else if (! validB64URLChars(input)) {
-    return ErrorMsg.notValidB64URLString
+    return ErrMsg.notValidB64URLString
   }
   else if (input.length < 2) {  // URL-safe at least 2
-    return ErrorMsg.notValidB64URLLength
+    return ErrMsg.notValidB64URLLength
   }
 
   return true

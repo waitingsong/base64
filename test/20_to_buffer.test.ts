@@ -7,7 +7,7 @@ import {
 import * as assert from 'power-assert'
 import rewire = require('rewire')
 
-import { b64byteLength, ErrorMsg } from '../src'
+import { b64byteLength, ErrMsg } from '../src'
 import { getLens, toUint8Array } from '../src/lib/to_buffer'
 
 import { input8 } from './config'
@@ -39,7 +39,7 @@ describe(filename, () => {
         }
         catch (ex) {
           assert(
-            ex.message && ex.message.includes(ErrorMsg.base64Invalidlength),
+            ex.message && ex.message.includes(ErrMsg.base64Invalidlength),
             ex.message,
           )
         }

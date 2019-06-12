@@ -1,4 +1,4 @@
-import { ErrorMsg } from './config'
+import { ErrMsg } from './config'
 import {
   isArrayBuffer, isUint8Array, parseDecodeInputBase64, parseEncodeInputString,
 } from './helper'
@@ -31,7 +31,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   let inst: Buffer
 
   if (! buf) {
-    throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
+    throw new TypeError(ErrMsg.fromArrayBufferInvalidParam)
   }
   else if (isUint8Array(buf)) {
     inst = Buffer.from(buf)
@@ -40,7 +40,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
     inst = Buffer.from(buf)
   }
   else {
-    throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
+    throw new TypeError(ErrMsg.fromArrayBufferInvalidParam)
   }
 
   const ret = inst.toString('base64')

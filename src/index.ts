@@ -1,7 +1,7 @@
 
 export * from './lib/index'
 export * from './lib/model'
-export { ErrorMsg } from './lib/config'
+export { ErrMsg } from './lib/config'
 export {
   b64toURLSafe,
   isArrayBuffer,

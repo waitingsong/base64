@@ -13,7 +13,7 @@ for (let i = 0, len = baseChars.length; i < len; ++i) {
 revLookup['-'.charCodeAt(0)] = 62
 revLookup['_'.charCodeAt(0)] = 63
 
-export const ErrorMsg = {
+export const ErrMsg = {
   base64Invalidlength: 'Invalid string. Length must be a multiple of 4 and positive',
   base64InvalidEqualPosition: 'Invalid base64 string, char "=" should not exists or at posiont >= 2',
   encodeInvalidParam: 'Invalid value of parameter of encode(), should be string|number|bigint',

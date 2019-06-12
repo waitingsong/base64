@@ -1,5 +1,5 @@
 // rewrite from https://github.com/beatgammit/base64-js
-import { revLookup, ErrorMsg } from './config'
+import { revLookup, ErrMsg } from './config'
 
 
 export function toUint8Array(b64: string): Uint8Array {
@@ -51,7 +51,7 @@ export function getLens(input: string): [number, number] {
   const len = input.length
 
   if (len & 3 || len <= 0) {
-    throw new Error(ErrorMsg.base64Invalidlength)
+    throw new Error(ErrMsg.base64Invalidlength)
   }
 
   // Trim off extra bytes after placeholder bytes are found

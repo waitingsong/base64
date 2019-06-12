@@ -1,5 +1,5 @@
 // rewrite from https://github.com/beatgammit/base64-js
-import { lookup, ErrorMsg } from './config'
+import { lookup, ErrMsg } from './config'
 
 
 export function fromUint8Array(input: Uint8Array): string {
@@ -40,7 +40,7 @@ export function fromUint8Array(input: Uint8Array): string {
 
 function encodeChunk(input: Uint8Array, start: number, end: number): string {
   if (start >= end) {
-    throw new Error(ErrorMsg.startMustGrossToEnd)
+    throw new Error(ErrMsg.startMustGrossToEnd)
   }
   const arrLen = Math.ceil((end - start) / 3)
   const ret: string[] = new Array(arrLen)

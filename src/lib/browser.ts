@@ -1,5 +1,5 @@
 import {
-  ErrorMsg,
+  ErrMsg,
 } from './config'
 import { fromUint8Array } from './from_buffer'
 import {
@@ -33,7 +33,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
   let input: Uint8Array
 
   if (! buf) {
-    throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
+    throw new TypeError(ErrMsg.fromArrayBufferInvalidParam)
   }
   else if (isUint8Array(buf)) {
     input = buf
@@ -42,7 +42,7 @@ export function fromBuffer(buf: ArrayBuffer | Uint8Array): string {
     input = new Uint8Array(buf)
   }
   else {
-    throw new TypeError(ErrorMsg.fromArrayBufferInvalidParam)
+    throw new TypeError(ErrMsg.fromArrayBufferInvalidParam)
   }
 
   return fromUint8Array(input)

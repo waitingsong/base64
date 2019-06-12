@@ -9,7 +9,7 @@ import * as assert from 'power-assert'
 import rewire = require('rewire')
 
 import { b64decode, b64encode, b64fromBuffer } from '../src/index'
-import { ErrorMsg } from '../src/lib/config'
+import { ErrMsg } from '../src/lib/config'
 
 import { input1, input2, input3, input4, input44, input5, input8 } from './config'
 
@@ -39,7 +39,7 @@ describe(filename, () => {
           assert(false, `Should throw error, but NOT. str:"${value}"`)
         }
         catch (ex) {
-          assert(ex.message.includes(ErrorMsg.encodeInvalidParam), ex.message)
+          assert(ex.message.includes(ErrMsg.encodeInvalidParam), ex.message)
         }
       })
     })
