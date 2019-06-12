@@ -13,14 +13,14 @@ revLookup['-'.charCodeAt(0)] = 62
 revLookup['_'.charCodeAt(0)] = 63
 
 export const ErrorMsg = {
-  fromArrayBufferInvalidParam: 'Invalid input, should be ArrayBuffer or Uint8Array',
   base64Invalidlength: 'Invalid string. Length must be a multiple of 4',
-  notString: 'Invalid value of parameter, should be string',
   encodeInvalidParam: 'Invalid value of parameter of encode(), should be string|number|bigint',
+  fromArrayBufferInvalidParam: 'Invalid input, should be ArrayBuffer or Uint8Array',
+  notString: 'Invalid value of parameter, should be string',
   notValidB64String: 'Valid base64 string only contains /^[a-zA-Z0-9+/_-]+={0,2}$/',
+  startMustGrossOrEqualToEnd:  'Parameters of start should less then end',
   textEncoderUndefined: 'TextEncoder undefined!',
   textDecoderUndefined: 'TextDecoder undefined!',
-  startMustGrossOrEqualToEnd:  'Parameters of start should less then end',
 }
 
 export const defaultConfig = {
