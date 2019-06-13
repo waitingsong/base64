@@ -1,6 +1,6 @@
 # Base64
 
-Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on [base64-js](https://www.npmjs.com/package/base64-js).
+Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on [base64-js](https://www.npmjs.com/package/base64-js).  
 Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applications)
 
 [![Version](https://img.shields.io/npm/v/@waiting/base64.svg)](https://www.npmjs.com/package/@waiting/base64)
