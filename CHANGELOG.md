@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/waitingsong/base64/compare/v4.2.0...v4.2.1) (2019-06-13)
+
+
+### Build System
+
+* use base64 as name of package for building ESM ([db96fe8](https://github.com/waitingsong/base64/commit/db96fe8))
+
+
+### Tests
+
+* **browser:** polyfill for ie11 ([5976675](https://github.com/waitingsong/base64/commit/5976675))
+
+
+
 ## [4.2.0](https://github.com/waitingsong/base64/compare/v4.1.0...v4.2.0) (2019-06-13)
 
 
