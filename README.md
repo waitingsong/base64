@@ -1,6 +1,7 @@
 # Base64
 
-Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on [base64-js](https://www.npmjs.com/package/base64-js)
+Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on [base64-js](https://www.npmjs.com/package/base64-js).
+Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applications)
 
 [![Version](https://img.shields.io/npm/v/@waiting/base64.svg)](https://www.npmjs.com/package/@waiting/base64)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -36,7 +37,7 @@ npm install @waiting/base64
 
 ### Encodeing
 ```ts
-import { b64encode, b64fromBuffer } from '@waiting/base64'
+import { b64encode, b64fromBuffer, b64urlEncode } from '@waiting/base64'
 
 b64encode('A') === 'QQ=='
 b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8KCutw=='
@@ -46,14 +47,30 @@ b64encode(1n) === b64encode(1) // 'MQ=='
 
 const u8arr = Uint8Array.from([0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87])
 b64fromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
-```
 
+// URL-safe
+b64urlEncode('A') === 'QQ'
+```
 
 ### Decoding
 ```ts
-import { b64decode } from '@waiting/base64'
+import { b64decode, b64urlDecode } from '@waiting/base64'
 
 b64decode('MQ==') === '1'
+b64urlDecode('MQ') === '1'
+```
+
+### Transfer
+```ts
+import { b64toURLSafe, b64fromURLSafe } from '@waiting/base64'
+
+// base64 -> URL-safe base64
+b64toURLSafe('QQ==') === 'QQ'
+b64toURLSafe('5Lit5paH5rWL6K+V') === '5Lit5paH5rWL6K-V'
+
+// URL-safe base64 -> base64
+b64fromURLSafe('QQ') === 'QQ=='
+b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh'
 ```
 
 

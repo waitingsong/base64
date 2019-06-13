@@ -1,6 +1,7 @@
 # Base64
 
-Base64 编码、解码 JS 实现， 支持长青浏览器和 Node.js，基于 [base64-js](https://www.npmjs.com/package/base64-js) 
+Base64 编码、解码 JS 实现，支持长青浏览器和 Node.js，基于 [base64-js](https://www.npmjs.com/package/base64-js) 。
+同时支持 [URL安全的base64](https://zh.wikipedia.org/zh-hans/Base64#%E5%9C%A8URL%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8)
 
 [![Version](https://img.shields.io/npm/v/@waiting/base64.svg)](https://www.npmjs.com/package/@waiting/base64)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -34,7 +35,7 @@ npm install @waiting/base64
 
 ### 编码
 ```ts
-import { b64encode, b64fromBuffer } from '@waiting/base64'
+import { b64encode, b64fromBuffer, b64urlEncode } from '@waiting/base64'
 
 b64encode('A') === 'QQ=='
 b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8KCutw=='
@@ -44,13 +45,30 @@ b64encode(1n) === b64encode(1) // 'MQ=='
 
 const u8arr = Uint8Array.from([0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87])
 b64fromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
+
+// URL-safe
+b64urlEncode('A') === 'QQ'
 ```
 
 ### 解码
 ```ts
-import { b64decode } from '@waiting/base64'
+import { b64decode, b64urlDecode } from '@waiting/base64'
 
 b64decode('MQ==') === '1'
+b64urlDecode('MQ') === '1'
+```
+
+### 转换
+```ts
+import { b64toURLSafe, b64fromURLSafe } from '@waiting/base64'
+
+// base64 -> URL-safe base64
+b64toURLSafe('QQ==') === 'QQ'
+b64toURLSafe('5Lit5paH5rWL6K+V') === '5Lit5paH5rWL6K-V'
+
+// URL-safe base64 -> base64
+b64fromURLSafe('QQ') === 'QQ=='
+b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh'
 ```
 
 
