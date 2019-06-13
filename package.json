@@ -6,6 +6,8 @@
   "keywords": [
     "base64",
     "URL-safe",
+    "atob",
+    "btoa",
     "browser",
     "Node.js",
     "rfc4648",
@@ -21,8 +23,8 @@
     "node": ">=10.4.0"
   },
   "bin": {},
-  "browser": "./dist/index.esm.js",
-  "es2015": "./dist/index.esm.js",
+  "browser": "./dist/base64.esm.js",
+  "es2015": "./dist/base64.esm.js",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
