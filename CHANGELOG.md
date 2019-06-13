@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/waitingsong/base64/compare/v4.1.0...v4.2.0) (2019-06-13)
+
+
+### Features
+
+* b64urlFromBuffer() ([0652596](https://github.com/waitingsong/base64/commit/0652596))
+
+
+
 ## [4.1.0](https://github.com/waitingsong/base64/compare/v4.0.1...v4.1.0) (2019-06-12)
 
 

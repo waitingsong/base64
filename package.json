@@ -1,7 +1,7 @@
 {
   "name": "@waiting/base64",
   "author": "waiting",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Base64 encoding/decoding in pure JS on both modern Browsers and Node.js. Also supports URL-safe base64",
   "keywords": [
     "base64",
