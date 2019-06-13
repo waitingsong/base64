@@ -25,6 +25,7 @@ import {
   testB64URL,
   validateB64,
   validateB64URL,
+  validateDecoder,
   validateEncoder,
   validB64Chars,
   validB64URLChars,
@@ -132,6 +133,30 @@ describe(filename, () => {
       }
     })
   })
+
+
+  describe('validateDecoder() works', () => {
+    it('with valid input', () => {
+      [1, 'a', {}, false, true, (void 0)].forEach(value => {
+        assert(typeof validateDecoder(value) === 'undefined')
+      })
+    })
+
+    it('with invalid input', () => {
+      try {
+        // @ts-ignore
+        validateDecoder(null)
+        assert(false, 'Should throw error, but NOT')
+      }
+      catch (ex) {
+        assert(
+          ex.message && ex.message.includes(ErrMsg.textDecoderUndefined),
+          ex.message,
+        )
+      }
+    })
+  })
+
 
   describe('parseTextDecoder() works', () => {
     it('with valid input', () => {
