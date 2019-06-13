@@ -82,6 +82,17 @@ export function b64urlEncode(
 
 
 /**
+ * Encode to URL-safe base64, source from ArrayBuffer or Uint8Array
+ *
+ * @see https://en.wikipedia.org/wiki/Base64#URL_applications
+ */
+export function b64urlFromBuffer(buffer: ArrayBuffer | Uint8Array): string {
+  const b64 = b64fromBuffer(buffer)
+  return b64toURLSafe(b64)
+}
+
+
+/**
  * Decode URL-safe base64 to original string.
  *
  * Note: using b64fromURLSafe() for converting URL-safe base64 string to base64 string

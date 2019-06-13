@@ -9,10 +9,21 @@ import * as assert from 'power-assert'
 import rewire = require('rewire')
 import { TextDecoder, TextEncoder } from 'util'
 
-import { b64decode, b64encode, b64fromBuffer, b64urlDecode, b64urlEncode } from '../src/index'
+import { b64decode, b64encode, b64fromBuffer, b64urlDecode, b64urlEncode, b64urlFromBuffer } from '../src/index'
 import { defaultConfig, ErrMsg } from '../src/lib/config'
 
-import { input1, input2, input3, input4, input44, input5, input8, inputURLSafe, inputURLSafe2 } from './config'
+import {
+  input1,
+  input2,
+  input3,
+  input4,
+  input44,
+  input5,
+  input8,
+  inputURLSafe,
+  inputURLSafe2,
+  inputURLSafe3,
+} from './config'
 
 
 const filename = basename(__filename)
@@ -89,6 +100,7 @@ describe(filename, () => {
         assert(actual === expected, `Ensure that ${u8arr} serialise to ${expected}`)
       })
     })
+
   })
 
 
@@ -138,6 +150,22 @@ describe(filename, () => {
         }
       })
     })
+  })
+
+
+  describe('Should b64urlFromBuffer() works', () => {
+    it('with valid input', () => {
+      inputURLSafe3.forEach(row => {
+        const u8arr = Uint8Array.from(row[0])
+        const ret = b64urlFromBuffer(u8arr);
+
+        [...ret].forEach((ch, idx) => {
+          const expect = row[1][idx]
+          assert(expect === ch, `${expect}, ${ch}, ${idx}`)
+        })
+      })
+    })
+
   })
 
 

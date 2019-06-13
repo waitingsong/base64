@@ -115,7 +115,6 @@ export const input8: Input8Item[] = [
   [ [0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87], '5Lit5paH'],
 ]
 
-
 export const input9 = [
   ' ',
   '*',
@@ -206,4 +205,8 @@ export const inputBase64URLInvalid = [
   '',
   'Q',
   'AABB\nAABB',
+]
+
+export const inputURLSafe3: Array<[number[], string]> = [
+  [ [0xff, 0xff, 0xbe, 0xff, 0xef, 0xbf, 0xfb, 0xef, 0xff], '__--_--_--__'],
 ]
