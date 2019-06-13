@@ -14,6 +14,8 @@ import {
   input4,
   input44,
   input8,
+  isEdge,
+  isIE,
 } from './config'
 
 
@@ -77,7 +79,9 @@ describe(filename, () => {
   describe('Should b64fromBuffer() works', () => {
     it('with valid input', () => {
       input8.forEach(row => {
-        const u8arr = Uint8Array.from(row[0])
+        const u8arr = isIE || isEdge
+          ? new Uint8Array(row[0])
+          : Uint8Array.from(row[0])
         const actual = b64fromBuffer(u8arr)
         const expected = row[1]
         assert(actual === expected, `Ensure that ${u8arr} serialise to ${expected}`)

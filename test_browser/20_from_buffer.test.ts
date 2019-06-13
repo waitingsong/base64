@@ -4,7 +4,7 @@ import * as assert from 'power-assert'
 
 import { fromUint8Array } from '../src/lib/from_buffer'
 
-import { input8 } from './config'
+import { input8, isEdge, isIE } from './config'
 
 
 const filename = '20_from_buffer.test.ts'

@@ -2,6 +2,13 @@ import {
   baseChars,
 } from '../src/lib/config'
 
+import { _dummy } from './patch'
+
+
+// @ts-ignore
+export const isIE = /* @cc_on!@*/false || !! document.documentMode
+// @ts-ignore
+export const isEdge = ! isIE && !! window.StyleMedia
 
 export const input1: Array<string | number | bigint> = [
   baseChars,
@@ -92,3 +99,4 @@ export const input8: Input5Item[] = [
   [ [0, -73, 23], 'ALcX'],
   [ [0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87], '5Lit5paH'],
 ]
+
