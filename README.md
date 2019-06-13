@@ -20,6 +20,8 @@ Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applica
 ## Browser requirement
 - Browsers which support [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility) and 
   [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility)
+- Polyfills [text-encoding](https://github.com/inexorabletash/text-encoding), 
+  [es6-shim](https://github.com/es-shims/es6-shim) for IE11
 
 
 ## Node.js requirement
@@ -33,7 +35,7 @@ npm install @waiting/base64
 ```
 
 
-## Usage
+## Usage of Node.js
 
 ### Encodeing
 ```ts
@@ -71,6 +73,29 @@ b64toURLSafe('5Lit5paH5rWL6K+V') === '5Lit5paH5rWL6K-V'
 // URL-safe base64 -> base64
 b64fromURLSafe('QQ') === 'QQ=='
 b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh'
+```
+
+
+## Usage of browser
+
+### ESM
+```html
+<script type="module">
+  import { b64encode, b64urlEncode } from './base64.esm.min.js' 
+  
+  console.log(b64encode('A')) // 'QQ=='
+  console.log(b64urlEncode('A'))  // 'QQ'
+</script>
+```
+
+### UMD
+```html
+<script src="./base64.umd.min.js"></script>
+<script>
+  // global variable base64
+  console.log(base64.b64encode('A'))
+  console.log(base64.b64urlEncode('A'))
+</script>
 ```
 
 
