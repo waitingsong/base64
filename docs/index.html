@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@waiting/base64</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@waiting/base64</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @waiting/base64</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="base64">Base64</h1>
+				<p>Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on <a href="https://www.npmjs.com/package/base64-js">base64-js</a>.<br>Also supports <a href="https://en.wikipedia.org/wiki/Base64#URL_applications">URL-safe base64</a></p>
+				<p><a href="https://www.npmjs.com/package/@waiting/base64"><img src="https://img.shields.io/npm/v/@waiting/base64.svg" alt="Version"></a>
+					<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+					<a href="https://travis-ci.org/waitingsong/base64"><img src="https://travis-ci.org/waitingsong/base64.svg?branch=master" alt="Build Status"></a>
+					<a href="https://ci.appveyor.com/project/waitingsong/base64/branch/master"><img src="https://ci.appveyor.com/api/projects/status/wp4a72sj7bc5ao3t/branch/master?svg=true" alt="Build status"></a>
+				<a href="https://coveralls.io/github/waitingsong/base64?branch=master"><img src="https://coveralls.io/repos/github/waitingsong/base64/badge.svg?branch=master" alt="Coverage Status"></a></p>
+				<h2 id="features">Features</h2>
+				<ul>
+					<li>Encoding input supports typeof <code>string</code>, <code>number</code> and <a href="https://github.com/tc39/proposal-bigint"><code>bigint</code></a></li>
+					<li>Encoding input supports <code>ArrayBuffer</code> or <code>Uint8Array</code></li>
+					<li>Encoding/Decoding via <code>TextEncoder</code>/<code>TextDecoder</code> under browser and <code>Buffer</code> under Node.js</li>
+				</ul>
+				<h2 id="browser-requirement">Browser requirement</h2>
+				<ul>
+					<li>Browsers which support <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility">TextEncoder</a> and
+					<a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility">TextDecoder</a></li>
+					<li>Polyfills <a href="https://github.com/inexorabletash/text-encoding">text-encoding</a>,
+					<a href="https://github.com/es-shims/es6-shim">es6-shim</a> for IE11</li>
+				</ul>
+				<h2 id="node-js-requirement">Node.js requirement</h2>
+				<ul>
+					<li>v10.4.0+ for <code>bigint</code> base64 encoding</li>
+					<li><a href="https://nodejs.org/api/util.html#util_whatwg_supported_encodings">ICU</a> installation for base64 decoding with encodeings other then <code>utf-8</code> and <code>utf-16le</code></li>
+				</ul>
+				<h2 id="installing">Installing</h2>
+				<pre><code class="language-bash">npm install @waiting/base64</code></pre>
+				<h2 id="usage-of-node-js">Usage of Node.js</h2>
+				<h3 id="encodeing">Encodeing</h3>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64encode, b64fromBuffer, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
+
+b64encode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ=='</span>
+b64encode(<span class="hljs-string">'𠮷'</span>) === b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) === b64encode(<span class="hljs-string">'\u{20BB7}'</span>) <span class="hljs-comment">// '8KCutw=='</span>
+b64encode(<span class="hljs-string">'schöne'</span>) === <span class="hljs-string">'c2Now7ZuZQ=='</span>
+<span class="hljs-comment">// bigint</span>
+b64encode(<span class="hljs-number">1</span>n) === b64encode(<span class="hljs-number">1</span>) <span class="hljs-comment">// 'MQ=='</span>
+
+<span class="hljs-keyword">const</span> u8arr = <span class="hljs-built_in">Uint8Array</span>.from([<span class="hljs-number">0xe4</span>, <span class="hljs-number">0xb8</span>, <span class="hljs-number">0xad</span>, <span class="hljs-number">0xe6</span>, <span class="hljs-number">0x96</span>, <span class="hljs-number">0x87</span>])
+b64fromBuffer(u8arr) === b64encode(<span class="hljs-string">'中文'</span>)  <span class="hljs-comment">// '5Lit5paH'</span>
+
+<span class="hljs-comment">// URL-safe</span>
+b64urlEncode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ'</span></code></pre>
+				<h3 id="decoding">Decoding</h3>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64decode, b64urlDecode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
+
+b64decode(<span class="hljs-string">'MQ=='</span>) === <span class="hljs-string">'1'</span>
+b64urlDecode(<span class="hljs-string">'MQ'</span>) === <span class="hljs-string">'1'</span></code></pre>
+				<h3 id="transfer">Transfer</h3>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64toURLSafe, b64fromURLSafe } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
+
+<span class="hljs-comment">// base64 -&gt; URL-safe base64</span>
+b64toURLSafe(<span class="hljs-string">'QQ=='</span>) === <span class="hljs-string">'QQ'</span>
+b64toURLSafe(<span class="hljs-string">'5Lit5paH5rWL6K+V'</span>) === <span class="hljs-string">'5Lit5paH5rWL6K-V'</span>
+
+<span class="hljs-comment">// URL-safe base64 -&gt; base64</span>
+b64fromURLSafe(<span class="hljs-string">'QQ'</span>) === <span class="hljs-string">'QQ=='</span>
+b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) === <span class="hljs-string">'0J/RgNC40LLQtdGCLCDQvNC40YAh'</span></code></pre>
+				<h2 id="usage-of-browser">Usage of browser</h2>
+				<h3 id="esm">ESM</h3>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">import</span> { b64encode, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'./base64.esm.min.js'</span> 
+
+  <span class="hljs-built_in">console</span>.log(b64encode(<span class="hljs-string">'A'</span>)) <span class="hljs-comment">// 'QQ=='</span>
+  <span class="hljs-built_in">console</span>.log(b64urlEncode(<span class="hljs-string">'A'</span>))  <span class="hljs-comment">// 'QQ'</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<h3 id="umd">UMD</h3>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./base64.umd.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-comment">// global variable base64</span>
+  <span class="hljs-built_in">console</span>.log(base64.b64encode(<span class="hljs-string">'A'</span>))
+  <span class="hljs-built_in">console</span>.log(base64.b64urlEncode(<span class="hljs-string">'A'</span>))
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<h2 id="testing">Testing</h2>
+				<pre><code class="language-sh">npm run <span class="hljs-built_in">test</span>
+
+<span class="hljs-comment"># for browsers FireFox and Chrome</span>
+npm run <span class="hljs-built_in">test</span>:browser
+
+<span class="hljs-comment"># for browsers all available on this client</span>
+<span class="hljs-built_in">cd</span> .config &amp;&amp; npm i
+npm run browser:detect</code></pre>
+				<h2 id="demos">Demos</h2>
+				<ul>
+					<li><a href="https://github.com/waitingsong/base64/blob/master/test_browser/">Browser</a></li>
+					<li><a href="https://github.com/waitingsong/base64/blob/master/test/">Node.js</a></li>
+				</ul>
+				<h2 id="license">License</h2>
+				<p><a href="LICENSE">MIT</a></p>
+				<h3 id="languages">Languages</h3>
+				<ul>
+					<li><a href="README.md">English</a></li>
+					<li><a href="README.zh-CN.md">中文</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#browsertextdecodertype" class="tsd-kind-icon">Browser<wbr>Text<wbr>Decoder<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#browsertextencodertype" class="tsd-kind-icon">Browser<wbr>Text<wbr>Encoder<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#nodetextdecodertype" class="tsd-kind-icon">Node<wbr>Text<wbr>Decoder<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#nodetextencodertype" class="tsd-kind-icon">Node<wbr>Text<wbr>Encoder<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#textdecoderfn" class="tsd-kind-icon">Text<wbr>Decoder<wbr>Fn</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#textencoderfn" class="tsd-kind-icon">Text<wbr>Encoder<wbr>Fn</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64bytelength" class="tsd-kind-icon">b64byte<wbr>Length</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64decode" class="tsd-kind-icon">b64decode</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64encode" class="tsd-kind-icon">b64encode</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64frombuffer" class="tsd-kind-icon">b64from<wbr>Buffer</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64urldecode" class="tsd-kind-icon">b64url<wbr>Decode</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64urlencode" class="tsd-kind-icon">b64url<wbr>Encode</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#b64urlfrombuffer" class="tsd-kind-icon">b64url<wbr>From<wbr>Buffer</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
