@@ -27,7 +27,7 @@ Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applica
 
 ## Node.js requirement
 - v10.4.0+ for `bigint` base64 encoding
-- [ICU](https://nodejs.org/api/util.html#util_whatwg_supported_encodings) installation for base64 decoding with encodeings other then `utf-8` and `utf-16le`
+- [ICU](https://nodejs.org/api/util.html#util_whatwg_supported_encodings) installation for base64 decoding with char encodings other then `utf-8` and `utf-16le`
 
 
 ## Installing
@@ -40,7 +40,7 @@ npm install @waiting/base64
 
 See the [Docs](https://waitingsong.github.io/base64/) for details
 
-### Encodeing
+### Encoding
 ```ts
 import { b64encode, b64fromBuffer, b64urlEncode } from '@waiting/base64'
 
