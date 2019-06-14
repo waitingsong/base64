@@ -14,7 +14,7 @@ import {
 import { getLens, _byteLength } from './to_buffer'
 
 
-/** Encode to base64, source from string|number|bigint */
+/** Encode to base64, source from string | number | bigint */
 export function b64encode(
   input: string | number | bigint,
   textEncoder?: TextEncoderFn,
@@ -64,7 +64,7 @@ export function b64byteLength(base64: string): number {
 
 
 /**
- * Encode to URL-safe base64, source from string|number|bigint.
+ * Encode to URL-safe base64, source from string | number | bigint.
  * Replace "+" to "-" and "/" to "_", and Remove "=".
  *
  * Note: using b64toURLSafe() for converting base64 string to URL-safe base64 string
