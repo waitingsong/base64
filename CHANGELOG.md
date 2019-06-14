@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.5](https://github.com/waitingsong/base64/compare/v4.2.4...v4.2.5) (2019-06-14)
+
+
+### Tests
+
+* validateDecoder() ([2f10583](https://github.com/waitingsong/base64/commit/2f10583))
+
+
+
 ### [4.2.4](https://github.com/waitingsong/base64/compare/v4.2.3...v4.2.4) (2019-06-13)
 
 
