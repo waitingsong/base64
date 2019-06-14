@@ -105,6 +105,23 @@ describe(filename, () => {
       else {  // node.js v11+
         const ret = parseTextEncoder()
         assert(ret === NodeTextEncoder)
+
+        // @ts-ignore
+        const orig = global.TextEncoder
+        try {
+          // @ts-ignore
+          global.TextEncoder = null
+          parseTextEncoder()
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          // @ts-ignore
+          global.TextEncoder = orig
+          assert(
+            ex.message && ex.message.includes(ErrMsg.textEncoderUndefined),
+            ex.message,
+          )
+        }
       }
     })
 
@@ -154,6 +171,23 @@ describe(filename, () => {
       else {  // node.js v11+
         const ret = parseTextDecoder()
         assert(ret === NodeTextDecoder)
+
+        // @ts-ignore
+        const orig = global.TextDecoder
+        try {
+          // @ts-ignore
+          global.TextDecoder = null
+          parseTextDecoder()
+          assert(false, 'Should throw error, but NOT')
+        }
+        catch (ex) {
+          // @ts-ignore
+          global.TextDecoder = orig
+          assert(
+            ex.message && ex.message.includes(ErrMsg.textDecoderUndefined),
+            ex.message,
+          )
+        }
       }
     })
 
