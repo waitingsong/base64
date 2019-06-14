@@ -210,3 +210,10 @@ export const inputBase64URLInvalid = [
 export const inputURLSafe3: Array<[number[], string]> = [
   [ [0xff, 0xff, 0xbe, 0xff, 0xef, 0xbf, 0xfb, 0xef, 0xff], '__--_--_--__'],
 ]
+
+
+export const inputInvalidEncoderAndDecoder: any[] = [
+  1, 'a', false, true, null,
+  {},
+  (void 0),
+]

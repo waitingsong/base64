@@ -29,35 +29,26 @@ export function parseDecodeInputBase64(base64: string): string {
 
 
 export function parseTextEncoder(textEncoder?: TextEncoderFn): TextEncoderFn {
-  const Encoder = typeof textEncoder === 'function'
-    ? textEncoder
-    : (typeof TextEncoder === 'function' ? TextEncoder : null)
-
-  validateEncoder(Encoder)
-  return <TextEncoderFn> Encoder
-}
-
-
-export function parseTextDecoder(textDecoder?: TextDecoderFn): TextDecoderFn {
-  const Decoder = typeof textDecoder === 'function'
-    ? textDecoder
-    : (typeof TextDecoder === 'function' ? TextDecoder : null)
-
-  validateDecoder(Decoder)
-  return <TextDecoderFn> Decoder
-}
-
-
-/** Throw error if input be null */
-export function validateEncoder(input: any): void {
-  if (input === null) {
+  if (typeof textEncoder === 'function') {
+    return textEncoder
+  }
+  else if (typeof TextEncoder === 'function') {
+    return TextEncoder
+  }
+  else {
     throw new TypeError(ErrMsg.textEncoderUndefined)
   }
 }
 
-/** Throw error if input be null */
-export function validateDecoder(input: any): void {
-  if (input === null) {
+
+export function parseTextDecoder(textDecoder?: TextDecoderFn): TextDecoderFn {
+  if (typeof textDecoder === 'function') {
+    return textDecoder
+  }
+  else if (typeof TextDecoder === 'function') {
+    return TextDecoder
+  }
+  else {
     throw new TypeError(ErrMsg.textDecoderUndefined)
   }
 }

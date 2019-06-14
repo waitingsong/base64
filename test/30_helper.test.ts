@@ -25,8 +25,6 @@ import {
   testB64URL,
   validateB64,
   validateB64URL,
-  validateDecoder,
-  validateEncoder,
   validB64Chars,
   validB64URLChars,
 } from '../src/lib/helper'
@@ -39,6 +37,7 @@ import {
   inputBase64Invalid,
   inputBase64URLCharsInvalid,
   inputBase64URLInvalid,
+  inputInvalidEncoderAndDecoder,
   inputTypedArrayExcludingUint8Array,
   inputUint8Array,
   inputURLSafe,
@@ -84,104 +83,99 @@ describe(filename, () => {
   })
 
 
-  describe('validateEncoder() works', () => {
-    it('with valid input', () => {
-      [1, 'a', {}, false, true, (void 0)].forEach(value => {
-        assert(typeof validateEncoder(value) === 'undefined')
-      })
-    })
-
-    it('with invalid input', () => {
-      try {
-        // @ts-ignore
-        validateEncoder(null)
-        assert(false, 'Should throw error, but NOT')
-      }
-      catch (ex) {
-        assert(
-          ex.message && ex.message.includes(ErrMsg.textEncoderUndefined),
-          ex.message,
-        )
-      }
-    })
-  })
-
-
   describe('parseTextEncoder() works', () => {
     it('with valid input', () => {
-      const ret = parseTextEncoder(NodeTextEncoder)
-      assert(ret === NodeTextEncoder)
+      const dummy = () => {}
+      // @ts-ignore
+      assert(parseTextEncoder(dummy) === dummy)
+      assert(parseTextEncoder(NodeTextEncoder) === NodeTextEncoder)
+    })
+
+    it('without input', () => {
+      // @ts-ignore
+      if (typeof TextEncoder === 'undefined' && typeof global.TextEncoder === 'undefined') {
+        // nodejs prior v11
+        // @ts-ignore
+        global.TextEncoder = NodeTextEncoder
+        const ret = parseTextEncoder()
+        assert(ret === NodeTextEncoder)
+        // @ts-ignore
+        delete global.TextEncoder
+      }
+      else {  // node.js v11+
+        const ret = parseTextEncoder()
+        assert(ret === NodeTextEncoder)
+      }
     })
 
     it('with invalid input', () => {
-      try {
-        // @ts-ignore
-        const ret = parseTextEncoder(null)
-        // node.js v11+ exports global TextEncoder
-        if (typeof TextEncoder === 'function') {
-          assert(true)
+      inputInvalidEncoderAndDecoder.forEach(value => {
+        try {
+          // @ts-ignore
+          parseTextEncoder(value)
+          // node.js v11+ exports global TextEncoder
+          if (typeof TextEncoder === 'function') {
+            assert(true)
+          }
+          else {  // prior of v11
+            assert(false, 'Should throw error, but NOT. ' + value.toString())
+          }
         }
-        else {
-          assert(false, 'Should throw error, but NOT')
+        catch (ex) {
+          assert(
+            ex.message && ex.message.includes(ErrMsg.textEncoderUndefined),
+            ex.message,
+          )
         }
-      }
-      catch (ex) {
-        assert(
-          ex.message && ex.message.includes(ErrMsg.textEncoderUndefined),
-          ex.message,
-        )
-      }
-    })
-  })
-
-
-  describe('validateDecoder() works', () => {
-    it('with valid input', () => {
-      [1, 'a', {}, false, true, (void 0)].forEach(value => {
-        assert(typeof validateDecoder(value) === 'undefined')
       })
-    })
-
-    it('with invalid input', () => {
-      try {
-        // @ts-ignore
-        validateDecoder(null)
-        assert(false, 'Should throw error, but NOT')
-      }
-      catch (ex) {
-        assert(
-          ex.message && ex.message.includes(ErrMsg.textDecoderUndefined),
-          ex.message,
-        )
-      }
     })
   })
 
 
   describe('parseTextDecoder() works', () => {
     it('with valid input', () => {
-      const ret = parseTextDecoder(NodeTextDecoder)
-      assert(ret === NodeTextDecoder)
+      const dummy = () => {}
+      // @ts-ignore
+      assert(parseTextDecoder(dummy) === dummy)
+      assert(parseTextDecoder(NodeTextDecoder) === NodeTextDecoder)
+    })
+
+    it('without input', () => {
+      // @ts-ignore
+      if (typeof TextDecoder === 'undefined' && typeof global.TextDecoder === 'undefined') {
+        // nodejs prior v11
+        // @ts-ignore
+        global.TextDecoder = NodeTextDecoder
+        const ret = parseTextDecoder()
+        assert(ret === NodeTextDecoder)
+        // @ts-ignore
+        delete global.TextDecoder
+      }
+      else {  // node.js v11+
+        const ret = parseTextDecoder()
+        assert(ret === NodeTextDecoder)
+      }
     })
 
     it('with invalid input', () => {
-      try {
-        // @ts-ignore
-        const ret = parseTextDecoder(null)
-        // node.js v11+ exports global TextDecoder
-        if (typeof TextDecoder === 'function') {
-          assert(true)
+      inputInvalidEncoderAndDecoder.forEach(value => {
+        try {
+          // @ts-ignore
+          parseTextDecoder(value)
+          if (typeof TextDecoder === 'function') {  // v11+
+            assert(true)
+          }
+          else {
+            assert(false, 'Should throw error, but NOT')
+          }
         }
-        else {
-          assert(false, 'Should throw error, but NOT')
+        catch (ex) {
+          assert(
+            ex.message && ex.message.includes(ErrMsg.textDecoderUndefined),
+            ex.message,
+          )
         }
-      }
-      catch (ex) {
-        assert(
-          ex.message && ex.message.includes(ErrMsg.textDecoderUndefined),
-          ex.message,
-        )
-      }
+      })
     })
   })
 
