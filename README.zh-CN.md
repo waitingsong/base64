@@ -36,7 +36,7 @@ npm install @waiting/base64
 
 ## Node.js 使用
 
-详见 [接口文档](https://waitingsong.github.io/base64/index.html)
+详见 [接口文档](https://waitingsong.github.io/base64/)
 
 ### 编码
 ```ts
@@ -79,7 +79,7 @@ b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh
 
 ## 浏览器使用
 
-详见 [接口文档](https://waitingsong.github.io/base64/index.html)
+详见 [接口文档](https://waitingsong.github.io/base64/)
 
 ### ESM
 ```html

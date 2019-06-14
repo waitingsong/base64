@@ -38,7 +38,7 @@ npm install @waiting/base64
 
 ## Usage of Node.js
 
-See the [Docs](https://waitingsong.github.io/base64/index.html) for details
+See the [Docs](https://waitingsong.github.io/base64/) for details
 
 ### Encodeing
 ```ts
@@ -81,7 +81,7 @@ b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh
 
 ## Usage of browser
 
-See the [Docs](https://waitingsong.github.io/base64/index.html) for details
+See the [Docs](https://waitingsong.github.io/base64/) for details
 
 ### ESM
 ```html
