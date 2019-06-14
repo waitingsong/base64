@@ -84,13 +84,13 @@
 				<h2 id="node-js-requirement">Node.js requirement</h2>
 				<ul>
 					<li>v10.4.0+ for <code>bigint</code> base64 encoding</li>
-					<li><a href="https://nodejs.org/api/util.html#util_whatwg_supported_encodings">ICU</a> installation for base64 decoding with encodeings other then <code>utf-8</code> and <code>utf-16le</code></li>
+					<li><a href="https://nodejs.org/api/util.html#util_whatwg_supported_encodings">ICU</a> installation for base64 decoding with char encodings other then <code>utf-8</code> and <code>utf-16le</code></li>
 				</ul>
 				<h2 id="installing">Installing</h2>
 				<pre><code class="language-bash">npm install @waiting/base64</code></pre>
 				<h2 id="usage-of-node-js">Usage of Node.js</h2>
-				<p>See the <a href="https://waitingsong.github.io/base64/index.html">Docs</a> for details</p>
-				<h3 id="encodeing">Encodeing</h3>
+				<p>See the <a href="https://waitingsong.github.io/base64/">Docs</a> for details</p>
+				<h3 id="encoding">Encoding</h3>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64encode, b64fromBuffer, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
 
 b64encode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ=='</span>
@@ -120,7 +120,7 @@ b64toURLSafe(<span class="hljs-string">'5Lit5paH5rWL6K+V'</span>) === <span clas
 b64fromURLSafe(<span class="hljs-string">'QQ'</span>) === <span class="hljs-string">'QQ=='</span>
 b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) === <span class="hljs-string">'0J/RgNC40LLQtdGCLCDQvNC40YAh'</span></code></pre>
 				<h2 id="usage-of-browser">Usage of browser</h2>
-				<p>See the <a href="https://waitingsong.github.io/base64/index.html">Docs</a> for details</p>
+				<p>See the <a href="https://waitingsong.github.io/base64/">Docs</a> for details</p>
 				<h3 id="esm">ESM</h3>
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="javascript">
   <span class="hljs-keyword">import</span> { b64encode, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'./base64.esm.min.js'</span> 
