@@ -52,12 +52,14 @@ export const base1: string[] = [
 
 export const input2: string[] = [
   '𠮷', '\uD842\uDFB7', '\u{D842}\u{DFB7}', '\u{20BB7}',
+  '\u{10121}',
 ]
 export const base2: string[] = [
   '8KCutw==',
   '8KCutw==',
   '8KCutw==',
   '8KCutw==',
+  '8JCEoQ==',
 ]
 
 export const input3: string[] = [
