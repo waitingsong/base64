@@ -20,8 +20,7 @@ Base64 编码、解码 JS 实现，支持长青浏览器和 Node.js，基于 [ba
 ## 浏览器需求
 - 支持 [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility) 和
   [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility) 功能
-- [text-encoding](https://github.com/inexorabletash/text-encoding), 
-  [es6-shim](https://github.com/es-shims/es6-shim) 补丁用于 IE11
+- [text-encoding](https://github.com/inexorabletash/text-encoding) 补丁用于 Edge
 
 
 ## Node.js 需求
@@ -43,16 +42,16 @@ npm install @waiting/base64
 import { b64encode, b64fromBuffer, b64urlEncode } from '@waiting/base64'
 
 b64encode('A') === 'QQ=='
-b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8KCutw=='
 b64encode('schöne') === 'c2Now7ZuZQ=='
-// bigint
-b64encode(1n) === b64encode(1) // 'MQ=='
+b64encode(1n) === b64encode(1) // bigint -> 'MQ==' 
+b64encode('𠮷') === b64encode('\uD842\uDFB7') === b64encode('\u{20BB7}') // '8KCutw=='
 
 const u8arr = Uint8Array.from([0xe4, 0xb8, 0xad, 0xe6, 0x96, 0x87])
 b64fromBuffer(u8arr) === b64encode('中文')  // '5Lit5paH'
 
 // URL-safe
 b64urlEncode('A') === 'QQ'
+b64urlEncode('中文测试') === '5Lit5paH5rWL6K-V'
 ```
 
 ### 解码
@@ -86,18 +85,26 @@ b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh
 <script type="module">
   import { b64encode, b64urlEncode } from './base64.esm.min.js' 
   
-  console.log(b64encode('A')) // 'QQ=='
-  console.log(b64urlEncode('A'))  // 'QQ'
+  console.log( b64encode('A') ) // 'QQ=='
+  console.log( b64urlEncode('A') )  // 'QQ'
+  console.log( b64encode('\uD842\uDFB7') ) // '8KCutw=='
 </script>
 ```
 
 ### UMD
 ```html
+<!-- Edge 补丁 
+  Note: text-encoder-lite 不能正确处理四字节UTF-8字符
+  see: https://github.com/solderjs/TextEncoderLite/issues/16
+-->
+<!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script> -->
+<!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding.js"></script> -->
 <script src="./base64.umd.min.js"></script>
 <script>
   // 全局变量 base64
-  console.log(base64.b64encode('A'))
-  console.log(base64.b64urlEncode('A'))
+  console.log( base64.b64encode('A') )
+  console.log( base64.b64urlEncode('A') )
+  console.log( base64.b64encode('\uD842\uDFB7') )
 </script>
 ```
 
@@ -115,7 +122,7 @@ npm run browser:detect
 ```
 
 
-## Demos
+## Demo
 - [Browser](https://github.com/waitingsong/base64/blob/master/test_browser/)
 - [Node.js](https://github.com/waitingsong/base64/blob/master/test/)
 

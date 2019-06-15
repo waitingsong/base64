@@ -70,16 +70,15 @@
 				<a href="https://coveralls.io/github/waitingsong/base64?branch=master"><img src="https://coveralls.io/repos/github/waitingsong/base64/badge.svg?branch=master" alt="Coverage Status"></a></p>
 				<h2 id="features">Features</h2>
 				<ul>
-					<li>Encoding input supports typeof <code>string</code>, <code>number</code> and <a href="https://github.com/tc39/proposal-bigint"><code>bigint</code></a></li>
-					<li>Encoding input supports <code>ArrayBuffer</code> or <code>Uint8Array</code></li>
+					<li>Supports typeof <code>string</code>, <code>number</code> and <a href="https://github.com/tc39/proposal-bigint"><code>bigint</code></a></li>
+					<li>Supports <code>ArrayBuffer</code> or <code>Uint8Array</code></li>
 					<li>Encoding/Decoding via <code>TextEncoder</code>/<code>TextDecoder</code> under browser and <code>Buffer</code> under Node.js</li>
 				</ul>
 				<h2 id="browser-requirement">Browser requirement</h2>
 				<ul>
 					<li>Browsers which support <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility">TextEncoder</a> and
 					<a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility">TextDecoder</a></li>
-					<li>Polyfills <a href="https://github.com/inexorabletash/text-encoding">text-encoding</a>,
-					<a href="https://github.com/es-shims/es6-shim">es6-shim</a> for IE11</li>
+					<li>Polyfill <a href="https://github.com/inexorabletash/text-encoding">text-encoding</a> for Edge</li>
 				</ul>
 				<h2 id="node-js-requirement">Node.js requirement</h2>
 				<ul>
@@ -94,16 +93,16 @@
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64encode, b64fromBuffer, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
 
 b64encode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ=='</span>
-b64encode(<span class="hljs-string">'𠮷'</span>) === b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) === b64encode(<span class="hljs-string">'\u{20BB7}'</span>) <span class="hljs-comment">// '8KCutw=='</span>
 b64encode(<span class="hljs-string">'schöne'</span>) === <span class="hljs-string">'c2Now7ZuZQ=='</span>
-<span class="hljs-comment">// bigint</span>
-b64encode(<span class="hljs-number">1</span>n) === b64encode(<span class="hljs-number">1</span>) <span class="hljs-comment">// 'MQ=='</span>
+b64encode(<span class="hljs-number">1</span>n) === b64encode(<span class="hljs-number">1</span>) <span class="hljs-comment">// bigint -&gt; 'MQ==' </span>
+b64encode(<span class="hljs-string">'𠮷'</span>) === b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) === b64encode(<span class="hljs-string">'\u{20BB7}'</span>) <span class="hljs-comment">// '8KCutw=='</span>
 
 <span class="hljs-keyword">const</span> u8arr = <span class="hljs-built_in">Uint8Array</span>.from([<span class="hljs-number">0xe4</span>, <span class="hljs-number">0xb8</span>, <span class="hljs-number">0xad</span>, <span class="hljs-number">0xe6</span>, <span class="hljs-number">0x96</span>, <span class="hljs-number">0x87</span>])
 b64fromBuffer(u8arr) === b64encode(<span class="hljs-string">'中文'</span>)  <span class="hljs-comment">// '5Lit5paH'</span>
 
 <span class="hljs-comment">// URL-safe</span>
-b64urlEncode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ'</span></code></pre>
+b64urlEncode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ'</span>
+b64urlEncode(<span class="hljs-string">'中文测试'</span>) === <span class="hljs-string">'5Lit5paH5rWL6K-V'</span></code></pre>
 				<h3 id="decoding">Decoding</h3>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64decode, b64urlDecode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
 
@@ -125,15 +124,23 @@ b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) 
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="javascript">
   <span class="hljs-keyword">import</span> { b64encode, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'./base64.esm.min.js'</span> 
 
-  <span class="hljs-built_in">console</span>.log(b64encode(<span class="hljs-string">'A'</span>)) <span class="hljs-comment">// 'QQ=='</span>
-  <span class="hljs-built_in">console</span>.log(b64urlEncode(<span class="hljs-string">'A'</span>))  <span class="hljs-comment">// 'QQ'</span>
+  <span class="hljs-built_in">console</span>.log( b64encode(<span class="hljs-string">'A'</span>) ) <span class="hljs-comment">// 'QQ=='</span>
+  <span class="hljs-built_in">console</span>.log( b64urlEncode(<span class="hljs-string">'A'</span>) )  <span class="hljs-comment">// 'QQ'</span>
+  <span class="hljs-built_in">console</span>.log( b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) ) <span class="hljs-comment">// '8KCutw=='</span>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<h3 id="umd">UMD</h3>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./base64.umd.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+				<pre><code class="language-html"><span class="hljs-comment">&lt;!-- polyfill for Edge
+  <span class="hljs-doctag">Note:</span> text-encoder-lite can't parse 4-bytes UTF-8 char correctly
+  see: https://github.com/solderjs/TextEncoderLite/issues/16
+--&gt;</span>
+<span class="hljs-comment">&lt;!-- &lt;script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"&gt;&lt;/script&gt; --&gt;</span>
+<span class="hljs-comment">&lt;!-- &lt;script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding.js"&gt;&lt;/script&gt; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./base64.umd.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   <span class="hljs-comment">// global variable base64</span>
-  <span class="hljs-built_in">console</span>.log(base64.b64encode(<span class="hljs-string">'A'</span>))
-  <span class="hljs-built_in">console</span>.log(base64.b64urlEncode(<span class="hljs-string">'A'</span>))
+  <span class="hljs-built_in">console</span>.log( base64.b64encode(<span class="hljs-string">'A'</span>) )
+  <span class="hljs-built_in">console</span>.log( base64.b64urlEncode(<span class="hljs-string">'A'</span>) )
+  <span class="hljs-built_in">console</span>.log( base64.b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) )
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<h2 id="testing">Testing</h2>
 				<pre><code class="language-sh">npm run <span class="hljs-built_in">test</span>
@@ -144,7 +151,7 @@ npm run <span class="hljs-built_in">test</span>:browser
 <span class="hljs-comment"># for browsers all available on this client</span>
 <span class="hljs-built_in">cd</span> .config &amp;&amp; npm i
 npm run browser:detect</code></pre>
-				<h2 id="demos">Demos</h2>
+				<h2 id="demo">Demo</h2>
 				<ul>
 					<li><a href="https://github.com/waitingsong/base64/blob/master/test_browser/">Browser</a></li>
 					<li><a href="https://github.com/waitingsong/base64/blob/master/test/">Node.js</a></li>
