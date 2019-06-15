@@ -11,7 +11,6 @@
     "sauce": "karma start karma.sauce.conf.js"
   },
   "devDependencies": {
-    "text-encoding": "git+https://github.com/inexorabletash/text-encoding.git",
     "es6-shim": "^0.35.5",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",

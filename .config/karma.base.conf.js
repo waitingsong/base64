@@ -7,9 +7,8 @@ module.exports = {
   ],
 
   files: [
-    // { pattern: '.config/node_modules/fast-text-encoding/text.min.js', watched: false },
-    { pattern: '.config/node_modules/text-encoding/lib/encoding-indexes.js', watched: false },
-    { pattern: '.config/node_modules/text-encoding/lib/encoding.js', watched: false },
+    // { pattern: '.config/node_modules/text-encoding/lib/encoding-indexes.js', watched: false },
+    // { pattern: '.config/node_modules/text-encoding/lib/encoding.js', watched: false },
     { pattern: '.config/node_modules/es6-shim/es6-shim.min.js', watched: false },
     // { pattern: '.config/node_modules/es7-shim/dist/es7-shim.min.js', watched: false },
     'src/**/*.ts',
