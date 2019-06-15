@@ -19,7 +19,7 @@ Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applica
 
 
 ## Browser requirement
-- Browsers which support [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility) and 
+- Ability of [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility) and 
   [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility)
 - Polyfill [text-encoding](https://github.com/inexorabletash/text-encoding) for Edge
 
@@ -96,7 +96,7 @@ See the [Docs](https://waitingsong.github.io/base64/) for details
 ### UMD
 ```html
 <!-- polyfill for Edge
-  Note: text-encoder-lite can't parse 4-bytes UTF-8 char correctly,
+  Note: text-encoder-lite parse 4-bytes UTF-8 char incorrectly,
   so use text-encoding instead.
   see: https://github.com/solderjs/TextEncoderLite/issues/16
 -->

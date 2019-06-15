@@ -76,7 +76,7 @@
 				</ul>
 				<h2 id="browser-requirement">Browser requirement</h2>
 				<ul>
-					<li>Browsers which support <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility">TextEncoder</a> and
+					<li>Ability of <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility">TextEncoder</a> and
 					<a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility">TextDecoder</a></li>
 					<li>Polyfill <a href="https://github.com/inexorabletash/text-encoding">text-encoding</a> for Edge</li>
 				</ul>
@@ -130,7 +130,8 @@ b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) 
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<h3 id="umd">UMD</h3>
 				<pre><code class="language-html"><span class="hljs-comment">&lt;!-- polyfill for Edge
-  <span class="hljs-doctag">Note:</span> text-encoder-lite can't parse 4-bytes UTF-8 char correctly
+  <span class="hljs-doctag">Note:</span> text-encoder-lite parse 4-bytes UTF-8 char incorrectly,
+  so use text-encoding instead.
   see: https://github.com/solderjs/TextEncoderLite/issues/16
 --&gt;</span>
 <span class="hljs-comment">&lt;!-- &lt;script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"&gt;&lt;/script&gt; --&gt;</span>
