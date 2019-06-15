@@ -96,7 +96,8 @@ See the [Docs](https://waitingsong.github.io/base64/) for details
 ### UMD
 ```html
 <!-- polyfill for Edge
-  Note: text-encoder-lite can't parse 4-bytes UTF-8 char correctly
+  Note: text-encoder-lite can't parse 4-bytes UTF-8 char correctly,
+  so use text-encoding instead.
   see: https://github.com/solderjs/TextEncoderLite/issues/16
 -->
 <!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script> -->

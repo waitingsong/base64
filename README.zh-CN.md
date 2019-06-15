@@ -94,7 +94,8 @@ b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh
 ### UMD
 ```html
 <!-- Edge 补丁 
-  Note: text-encoder-lite 不能正确处理四字节UTF-8字符
+  Note: text-encoder-lite 不能正确处理四字节UTF-8字符，
+  故使用 text-encoding 替代。
   see: https://github.com/solderjs/TextEncoderLite/issues/16
 -->
 <!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script> -->
