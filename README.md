@@ -16,6 +16,7 @@ Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applica
 - Supports typeof `string`, `number` and [`bigint`](https://github.com/tc39/proposal-bigint)
 - Supports `ArrayBuffer` or `Uint8Array`
 - Encoding/Decoding via `TextEncoder`/`TextDecoder` under browser and `Buffer` under Node.js
+- Building various modules`ESM`, `UMD` and `CJS`
 
 
 ## Browser requirement

@@ -15,6 +15,7 @@ Base64 编码、解码 JS 实现，支持长青浏览器和 Node.js，基于 [ba
 - 编码输入参数支持 `string`, `number` 和 [`bigint`](https://github.com/tc39/proposal-bigint) 类型
 - 编码输入参数支持 `ArrayBuffer` 或者 `Uint8Array`
 - 编码解码的实现： 浏览器下通过 `TextEncoder`/`TextDecoder`，Node.js 下通过 `Buffer`
+- 编译输出多种模块格式 `ESM`，`UMD`，以及 `CJS`
 
 
 ## 浏览器需求
