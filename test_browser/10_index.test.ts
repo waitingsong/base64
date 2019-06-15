@@ -29,13 +29,15 @@ describe(filename, () => {
       input1.concat(input2).forEach((input, idx: number) => {
         const ret = b64encode(input)
         const expect = baseArr[idx]
-        assert(ret === expect, `input: "${ input.toString() }", expect: "${expect}"`)
+        assert(
+          ret === expect,
+          `input: "${ input.toString() }", expect: "${expect}", got: "${ret}", index: ${idx}`)
       })
 
       input4.forEach(input => {
         const ret = b64encode(input)
         const str = b64decode(ret)
-        assert(str === input.toString(), `input: "${ input.toString() }", expect: "${str}"`)
+        assert(str === input.toString(), `input: "${ input.toString() }", expect: "${str}", got: "${ret}"`)
       })
     })
 
