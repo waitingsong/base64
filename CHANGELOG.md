@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.7](https://github.com/waitingsong/base64/compare/v4.2.6...v4.2.7) (2019-06-15)
+
+
+### Tests
+
+* **browser:** add 30_helper.test.ts ([13a8844](https://github.com/waitingsong/base64/commit/13a8844))
+* add 40_browser-textencoder-polyfill.test.ts ([1c517e1](https://github.com/waitingsong/base64/commit/1c517e1))
+* update log ([ebffed1](https://github.com/waitingsong/base64/commit/ebffed1))
+
+
+
 ### [4.2.6](https://github.com/waitingsong/base64/compare/v4.2.5...v4.2.6) (2019-06-14)
 
 
