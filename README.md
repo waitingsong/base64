@@ -1,11 +1,11 @@
-# Base64
+# [Base64](https://waitingsong.github.io/base64/)
 
 Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on [base64-js](https://www.npmjs.com/package/base64-js).  
 Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applications)
 
 [![Version](https://img.shields.io/npm/v/@waiting/base64.svg)](https://www.npmjs.com/package/@waiting/base64)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/lang-TypeScript-blue.svg)](https://waitingsong.github.io/base64/)
+![](https://img.shields.io/badge/lang-TypeScript-blue.svg)
 [![Build Status](https://travis-ci.org/waitingsong/base64.svg?branch=master)](https://travis-ci.org/waitingsong/base64)
 [![Build status](https://ci.appveyor.com/api/projects/status/wp4a72sj7bc5ao3t/branch/master?svg=true)](https://ci.appveyor.com/project/waitingsong/base64/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/waitingsong/base64/badge.svg?branch=master)](https://coveralls.io/github/waitingsong/base64?branch=master)

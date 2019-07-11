@@ -1,11 +1,11 @@
-# Base64
+# [Base64](https://waitingsong.github.io/base64/)
 
 Base64 编码、解码 JS 实现，支持长青浏览器和 Node.js，基于 [base64-js](https://www.npmjs.com/package/base64-js) 。
 同时支持 [URL安全的base64](https://zh.wikipedia.org/zh-hans/Base64#%E5%9C%A8URL%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8)
 
 [![Version](https://img.shields.io/npm/v/@waiting/base64.svg)](https://www.npmjs.com/package/@waiting/base64)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/lang-TypeScript-blue.svg)](https://waitingsong.github.io/base64/)
+![](https://img.shields.io/badge/lang-TypeScript-blue.svg)
 [![Build Status](https://travis-ci.org/waitingsong/base64.svg?branch=master)](https://travis-ci.org/waitingsong/base64)
 [![Build status](https://ci.appveyor.com/api/projects/status/wp4a72sj7bc5ao3t/branch/master?svg=true)](https://ci.appveyor.com/project/waitingsong/base64/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/waitingsong/base64/badge.svg?branch=master)](https://coveralls.io/github/waitingsong/base64?branch=master)
