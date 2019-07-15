@@ -1,4 +1,4 @@
-# [Base64](https://waitingsong.github.io/base64/)
+# [base64](https://waitingsong.github.io/base64/)
 
 Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on [base64-js](https://www.npmjs.com/package/base64-js).  
 Also supports [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applications)
@@ -101,8 +101,10 @@ See the [Docs](https://waitingsong.github.io/base64/) for details
   so use text-encoding instead.
   see: https://github.com/solderjs/TextEncoderLite/issues/16
 -->
-<!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script> -->
-<!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding.js"></script> -->
+<!--
+<script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script>
+<script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding.js"></script>
+-->
 <script src="./base64.umd.min.js"></script>
 <script>
   // global variable base64

@@ -1,4 +1,4 @@
-# [Base64](https://waitingsong.github.io/base64/)
+# [base64](https://waitingsong.github.io/base64/)
 
 Base64 编码、解码 JS 实现，支持长青浏览器和 Node.js，基于 [base64-js](https://www.npmjs.com/package/base64-js) 。
 同时支持 [URL安全的base64](https://zh.wikipedia.org/zh-hans/Base64#%E5%9C%A8URL%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8)
@@ -100,8 +100,10 @@ b64fromURLSafe('0J_RgNC40LLQtdGCLCDQvNC40YAh') === '0J/RgNC40LLQtdGCLCDQvNC40YAh
   故使用 text-encoding 替代。
   see: https://github.com/solderjs/TextEncoderLite/issues/16
 -->
-<!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script> -->
-<!-- <script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding.js"></script> -->
+<!--
+<script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script>
+<script src="https://raw.githubusercontent.com/inexorabletash/text-encoding/master/lib/encoding.js"></script>
+-->
 <script src="./base64.umd.min.js"></script>
 <script>
   // 全局变量 base64
