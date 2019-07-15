@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.9](https://github.com/waitingsong/base64/compare/v4.2.8...v4.2.9) (2019-07-15)
+
+
+### Tests
+
+* for '\u{10121}' ([fb4ab93](https://github.com/waitingsong/base64/commit/fb4ab93))
+
+
+
 ### [4.2.8](https://github.com/waitingsong/base64/compare/v4.2.6...v4.2.8) (2019-06-15)
 
 
