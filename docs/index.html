@@ -60,8 +60,11 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="base64"><a href="https://waitingsong.github.io/base64/">base64</a></h1>
-				<p>Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on <a href="https://www.npmjs.com/package/base64-js">base64-js</a>.<br>Also supports <a href="https://en.wikipedia.org/wiki/Base64#URL_applications">URL-safe base64</a></p>
+				<a href="#a-hrefhttpswaitingsonggithubiobase64base64a" id="a-hrefhttpswaitingsonggithubiobase64base64a" style="color: inherit; text-decoration: none;">
+					<h1><a href="https://waitingsong.github.io/base64/">base64</a></h1>
+				</a>
+				<p>Base64 encoding/decoding in pure JS on both modern Browsers and Node.js based on <a href="https://www.npmjs.com/package/base64-js">base64-js</a>.
+				Also supports <a href="https://en.wikipedia.org/wiki/Base64#URL_applications">URL-safe base64</a></p>
 				<p><a href="https://www.npmjs.com/package/@waiting/base64"><img src="https://img.shields.io/npm/v/@waiting/base64.svg" alt="Version"></a>
 					<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
 					<img src="https://img.shields.io/badge/lang-TypeScript-blue.svg" alt="">
@@ -69,29 +72,41 @@
 					<a href="https://ci.appveyor.com/project/waitingsong/base64/branch/master"><img src="https://ci.appveyor.com/api/projects/status/wp4a72sj7bc5ao3t/branch/master?svg=true" alt="Build status"></a>
 					<a href="https://coveralls.io/github/waitingsong/base64?branch=master"><img src="https://coveralls.io/repos/github/waitingsong/base64/badge.svg?branch=master" alt="Coverage Status"></a>
 				<a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits"></a></p>
-				<h2 id="features">Features</h2>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h2>Features</h2>
+				</a>
 				<ul>
 					<li>Supports typeof <code>string</code>, <code>number</code> and <a href="https://github.com/tc39/proposal-bigint"><code>bigint</code></a></li>
 					<li>Supports <code>ArrayBuffer</code> or <code>Uint8Array</code></li>
 					<li>Encoding/Decoding via <code>TextEncoder</code>/<code>TextDecoder</code> under browser and <code>Buffer</code> under Node.js</li>
 					<li>Building various modules<code>ESM</code>, <code>UMD</code> and <code>CJS</code></li>
 				</ul>
-				<h2 id="browser-requirement">Browser requirement</h2>
+				<a href="#browser-requirement" id="browser-requirement" style="color: inherit; text-decoration: none;">
+					<h2>Browser requirement</h2>
+				</a>
 				<ul>
 					<li>Ability of <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder#Browser_compatibility">TextEncoder</a> and
 					<a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder#Browser_compatibility">TextDecoder</a></li>
 					<li>Polyfill <a href="https://github.com/inexorabletash/text-encoding">text-encoding</a> for Edge</li>
 				</ul>
-				<h2 id="node-js-requirement">Node.js requirement</h2>
+				<a href="#nodejs-requirement" id="nodejs-requirement" style="color: inherit; text-decoration: none;">
+					<h2>Node.js requirement</h2>
+				</a>
 				<ul>
 					<li>v10.4.0+ for <code>bigint</code> base64 encoding</li>
 					<li><a href="https://nodejs.org/api/util.html#util_whatwg_supported_encodings">ICU</a> installation for base64 decoding with char encodings other then <code>utf-8</code> and <code>utf-16le</code></li>
 				</ul>
-				<h2 id="installing">Installing</h2>
+				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
+					<h2>Installing</h2>
+				</a>
 				<pre><code class="language-bash">npm install @waiting/base64</code></pre>
-				<h2 id="usage-of-node-js">Usage of Node.js</h2>
+				<a href="#usage-of-nodejs" id="usage-of-nodejs" style="color: inherit; text-decoration: none;">
+					<h2>Usage of Node.js</h2>
+				</a>
 				<p>See the <a href="https://waitingsong.github.io/base64/">Docs</a> for details</p>
-				<h3 id="encoding">Encoding</h3>
+				<a href="#encoding" id="encoding" style="color: inherit; text-decoration: none;">
+					<h3>Encoding</h3>
+				</a>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64encode, b64fromBuffer, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
 
 b64encode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ=='</span>
@@ -105,12 +120,16 @@ b64fromBuffer(u8arr) === b64encode(<span class="hljs-string">'中文'</span>)  <
 <span class="hljs-comment">// URL-safe</span>
 b64urlEncode(<span class="hljs-string">'A'</span>) === <span class="hljs-string">'QQ'</span>
 b64urlEncode(<span class="hljs-string">'中文测试'</span>) === <span class="hljs-string">'5Lit5paH5rWL6K-V'</span></code></pre>
-				<h3 id="decoding">Decoding</h3>
+				<a href="#decoding" id="decoding" style="color: inherit; text-decoration: none;">
+					<h3>Decoding</h3>
+				</a>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64decode, b64urlDecode } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
 
 b64decode(<span class="hljs-string">'MQ=='</span>) === <span class="hljs-string">'1'</span>
 b64urlDecode(<span class="hljs-string">'MQ'</span>) === <span class="hljs-string">'1'</span></code></pre>
-				<h3 id="transfer">Transfer</h3>
+				<a href="#transfer" id="transfer" style="color: inherit; text-decoration: none;">
+					<h3>Transfer</h3>
+				</a>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { b64toURLSafe, b64fromURLSafe } <span class="hljs-keyword">from</span> <span class="hljs-string">'@waiting/base64'</span>
 
 <span class="hljs-comment">// base64 -&gt; URL-safe base64</span>
@@ -120,9 +139,13 @@ b64toURLSafe(<span class="hljs-string">'5Lit5paH5rWL6K+V'</span>) === <span clas
 <span class="hljs-comment">// URL-safe base64 -&gt; base64</span>
 b64fromURLSafe(<span class="hljs-string">'QQ'</span>) === <span class="hljs-string">'QQ=='</span>
 b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) === <span class="hljs-string">'0J/RgNC40LLQtdGCLCDQvNC40YAh'</span></code></pre>
-				<h2 id="usage-of-browser">Usage of browser</h2>
+				<a href="#usage-of-browser" id="usage-of-browser" style="color: inherit; text-decoration: none;">
+					<h2>Usage of browser</h2>
+				</a>
 				<p>See the <a href="https://waitingsong.github.io/base64/">Docs</a> for details</p>
-				<h3 id="esm">ESM</h3>
+				<a href="#esm" id="esm" style="color: inherit; text-decoration: none;">
+					<h3>ESM</h3>
+				</a>
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="javascript">
   <span class="hljs-keyword">import</span> { b64encode, b64urlEncode } <span class="hljs-keyword">from</span> <span class="hljs-string">'./base64.esm.min.js'</span> 
 
@@ -130,7 +153,9 @@ b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) 
   <span class="hljs-built_in">console</span>.log( b64urlEncode(<span class="hljs-string">'A'</span>) )  <span class="hljs-comment">// 'QQ'</span>
   <span class="hljs-built_in">console</span>.log( b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) ) <span class="hljs-comment">// '8KCutw=='</span>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-				<h3 id="umd">UMD</h3>
+				<a href="#umd" id="umd" style="color: inherit; text-decoration: none;">
+					<h3>UMD</h3>
+				</a>
 				<pre><code class="language-html"><span class="hljs-comment">&lt;!-- polyfill for Edge
   <span class="hljs-doctag">Note:</span> text-encoder-lite parse 4-bytes UTF-8 char incorrectly,
   so use text-encoding instead.
@@ -147,7 +172,9 @@ b64fromURLSafe(<span class="hljs-string">'0J_RgNC40LLQtdGCLCDQvNC40YAh'</span>) 
   <span class="hljs-built_in">console</span>.log( base64.b64urlEncode(<span class="hljs-string">'A'</span>) )
   <span class="hljs-built_in">console</span>.log( base64.b64encode(<span class="hljs-string">'\uD842\uDFB7'</span>) )
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-				<h2 id="testing">Testing</h2>
+				<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
+					<h2>Testing</h2>
+				</a>
 				<pre><code class="language-sh">npm run <span class="hljs-built_in">test</span>
 
 <span class="hljs-comment"># for browsers FireFox and Chrome</span>
@@ -156,14 +183,20 @@ npm run <span class="hljs-built_in">test</span>:browser
 <span class="hljs-comment"># for browsers all available on this client</span>
 <span class="hljs-built_in">cd</span> .config &amp;&amp; npm i
 npm run browser:detect</code></pre>
-				<h2 id="demo">Demo</h2>
+				<a href="#demo" id="demo" style="color: inherit; text-decoration: none;">
+					<h2>Demo</h2>
+				</a>
 				<ul>
 					<li><a href="https://github.com/waitingsong/base64/blob/master/test_browser/">Browser</a></li>
 					<li><a href="https://github.com/waitingsong/base64/blob/master/test/">Node.js</a></li>
 				</ul>
-				<h2 id="license">License</h2>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
 				<p><a href="LICENSE">MIT</a></p>
-				<h3 id="languages">Languages</h3>
+				<a href="#languages" id="languages" style="color: inherit; text-decoration: none;">
+					<h3>Languages</h3>
+				</a>
 				<ul>
 					<li><a href="README.md">English</a></li>
 					<li><a href="README.zh-CN.md">中文</a></li>
@@ -236,6 +269,7 @@ npm run browser:detect</code></pre>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -284,7 +318,7 @@ npm run browser:detect</code></pre>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
